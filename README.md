@@ -7,4 +7,4 @@ Scale Factor is simple tool for converting pixel values between densities suppor
 * Useful for mobile application developers and UI designers.
 
 
-![App Screenshot](media/screenshot.png) 
+![App Screenshot](media/screenshot.svg)
