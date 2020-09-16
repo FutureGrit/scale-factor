@@ -14,7 +14,6 @@ class ScaleFactor extends StatelessWidget {
       theme: ThemeData.light().copyWith(
         primaryColor: Color(0xFFFCF6F5),
         scaffoldBackgroundColor: Color(0xCCFCF6F5),
-
         //visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Container(

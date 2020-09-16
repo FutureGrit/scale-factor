@@ -4,9 +4,10 @@ import 'custom_icon_button.dart';
 
 const titleTextStyle = TextStyle(
     fontSize: 32,
-    fontWeight: FontWeight.bold,
+    fontFamily: 'RedHatText',
+    fontWeight: FontWeight.w900,
     color: Colors.black,
-    letterSpacing: 12);
+    letterSpacing: 10);
 
 class InputPage extends StatefulWidget {
   @override
