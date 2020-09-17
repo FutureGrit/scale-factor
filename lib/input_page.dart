@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scale_factor/custom_icons.dart';
 
 import 'custom_icon_button.dart';
 
@@ -14,8 +15,6 @@ class InputPage extends StatefulWidget {
   _InputPageState createState() => _InputPageState();
 }
 
-//TODO: Replace button icon
-//TODO: Add font
 class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
@@ -27,6 +26,7 @@ class _InputPageState extends State<InputPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
+                // App title text
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -42,14 +42,17 @@ class _InputPageState extends State<InputPage> {
                 ),
               ),
               CustomIconButton(
-                icon: Icons.golf_course,
+                // This is Information icon
+                icon: CustomIcons.info,
                 backgroundColor: Color(0xFFFF3D00),
               ),
               SizedBox(
                 width: 16.0,
               ),
               CustomIconButton(
-                icon: Icons.brightness_2,
+                // This is Dark-Mode icon
+                icon: CustomIcons.dark_mode,
+                iconColor: Color(0xFFFF3D00),
                 backgroundColor: Color(0xFF0F171C),
               )
             ],
