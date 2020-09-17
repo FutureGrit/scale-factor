@@ -1,3 +1,4 @@
+***NOTE: This application is still under development. Stay Tuned.***
 # Scale Factor <img align="left" src="media/logo.png">
 ***Create perfect design for all.***
 
