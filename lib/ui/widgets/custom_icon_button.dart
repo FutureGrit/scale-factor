@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:scale_factor/custom_icons.dart';
+const iconSize = 28.0;
+const iconPadding = 12.0;
+const iconBorderRadius = 6.0;
 
 class CustomIconButton extends StatelessWidget {
   CustomIconButton(
@@ -19,37 +20,18 @@ class CustomIconButton extends StatelessWidget {
       decoration: ShapeDecoration(
         color: backgroundColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(6.0)),
+          borderRadius: BorderRadius.all(Radius.circular(iconBorderRadius)),
         ),
       ),
       child: IconButton(
-        padding: EdgeInsets.all(12.0),
-        iconSize: 40,
+        padding: EdgeInsets.all(iconPadding),
+        iconSize: iconSize,
         icon: Icon(icon),
         color: iconColor,
         onPressed: () {
-          print('Icon tapped');
+          // TODO: Implement functionality
         },
       ),
     );
   }
 }
-
-// return Ink(
-// decoration: ShapeDecoration(
-// color: backgroundColor,
-// shape: RoundedRectangleBorder(
-// borderRadius: BorderRadius.all(Radius.circular(6.0)),
-// ),
-// ),
-// child: IconButton(
-// iconSize: 48,
-// icon: SvgPicture.asset(
-// 'assets/dark-mode.svg',
-// color: Colors.white,
-// ),
-// onPressed: () {
-// print('Icon tapped');
-// },
-// ),
-// );
