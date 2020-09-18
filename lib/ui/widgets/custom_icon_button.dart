@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 
 const iconSize = 28.0;
 const iconPadding = 12.0;
-const iconBorderRadius = 6.0;
+// TODO: change below name to buttonBorderRadius
+const buttonBorderRadius = 6.0;
+const List<BoxShadow> buttonShadow = [
+  BoxShadow(
+    color: Color(0x40000000),
+    offset: Offset(2.0, 2.0),
+    blurRadius: 6,
+  )
+];
 
 class CustomIconButton extends StatelessWidget {
   CustomIconButton(
@@ -17,10 +25,12 @@ class CustomIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Ink(
+      // TODO: Add Shadow
       decoration: ShapeDecoration(
+        shadows: buttonShadow,
         color: backgroundColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(iconBorderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(buttonBorderRadius)),
         ),
       ),
       child: IconButton(

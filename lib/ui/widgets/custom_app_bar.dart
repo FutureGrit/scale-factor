@@ -8,7 +8,7 @@ const titleTextStyle = TextStyle(
   fontSize: 30,
   fontFamily: 'RedHatText',
   fontWeight: FontWeight.w900,
-  color: Colors.black,
+  color: Color(0xFF023047),
   letterSpacing: 7,
 );
 
