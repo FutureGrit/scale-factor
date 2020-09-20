@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:scale_factor/utils/ui_utils.dart';
 
 import 'custom_icon_button.dart';
 import '../custom_icons.dart';
 
-const spaceBetween = 16.0;
 const titleTextStyle = TextStyle(
   fontSize: 30,
   fontFamily: 'RedHatText',
@@ -43,9 +43,7 @@ class CustomAppBar extends StatelessWidget {
               icon: CustomIcons.info,
               backgroundColor: Color(0xFFFF3D00),
             ),
-            SizedBox(
-              width: spaceBetween,
-            ),
+            horizontalSpaceMedium,
             CustomIconButton(
               // This is Dark-Mode icon
               icon: CustomIcons.dark_mode,

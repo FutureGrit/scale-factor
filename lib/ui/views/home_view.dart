@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:scale_factor/ui/widgets/custom_app_bar.dart';
-import 'package:scale_factor/ui/widgets/input_section.dart';
 
-// TODO: move below padding to ui_util
-const horizontalPadding = 24.0;
-const verticalPadding = 8.0;
+import 'package:scale_factor/ui/widgets/baseline_value_unit.dart';
+import 'package:scale_factor/ui/widgets/custom_app_bar.dart';
+import 'package:scale_factor/ui/widgets/platform.dart';
+import 'package:scale_factor/utils/ui_utils.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -22,12 +21,12 @@ class _HomeViewState extends State<HomeView> {
       ),
       body: Container(
         padding: EdgeInsets.symmetric(
-            horizontal: horizontalPadding, vertical: verticalPadding),
+            horizontal: horizontalPaddingLarge, vertical: verticalPaddingSmall),
         width: double.infinity,
-        child: InputSection(),
-        // TODO 1.2: Implement "Value" edit text
-        // TODO 1.3: Implement "Unit" and "Baseline" dropdown
-
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [PlatformType(), verticalSpaceLarge, BaselineValueUnit()],
+        ),
         // TODO 2: Create output section
       ),
     );

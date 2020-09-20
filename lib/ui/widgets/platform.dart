@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:scale_factor/ui/widgets/baseline_value_unit.dart';
 
 import '../custom_icons.dart';
-import 'dropdown_input.dart';
-
-const spaceBetweenSmall = 8.0;
-const spaceBetweenMedium = 16.0;
-const spaceBetweenLarge = 24.0;
-//TODO: set above spaces in ui_util
+import 'package:scale_factor/utils/ui_utils.dart';
 
 const borderWidth = 1.0;
 const borderRadius = 4.0;
@@ -19,15 +13,12 @@ const labelTextStyle = TextStyle(
   letterSpacing: 2.0,
 );
 
-// TODO: move below padding to ui_util
-const horizontalPadding = 24.0;
-
-class InputSection extends StatefulWidget {
+class PlatformType extends StatefulWidget {
   @override
-  _InputSectionState createState() => _InputSectionState();
+  _PlatformTypeState createState() => _PlatformTypeState();
 }
 
-class _InputSectionState extends State<InputSection> {
+class _PlatformTypeState extends State<PlatformType> {
   List<bool> isSelected = [true, false, false];
 
   @override
@@ -39,15 +30,13 @@ class _InputSectionState extends State<InputSection> {
           ' PLATFORM',
           style: labelTextStyle,
         ),
-        SizedBox(
-          height: spaceBetweenSmall,
-        ),
+        verticalSpaceSmall,
         ToggleButtons(
           constraints: BoxConstraints.expand(
             //TODO: Find another way to set width
             width: ((MediaQuery.of(context).size.width) -
                     ((isSelected.length + 1) * borderWidth) -
-                    (horizontalPadding * 2)) /
+                    (horizontalPaddingLarge * 2)) /
                 isSelected.length,
             height: toggleButtonsHeight,
           ),
@@ -91,10 +80,6 @@ class _InputSectionState extends State<InputSection> {
             });
           },
         ),
-        // SizedBox(
-        //   height: spaceBetweenLarge,
-        // ),
-//        BaselineValueUnit(),
       ],
     );
   }
