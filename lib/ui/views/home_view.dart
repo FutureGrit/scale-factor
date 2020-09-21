@@ -2,15 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:scale_factor/ui/widgets/baseline_value_unit.dart';
 import 'package:scale_factor/ui/widgets/custom_app_bar.dart';
-import 'package:scale_factor/ui/widgets/platform.dart';
+import 'package:scale_factor/ui/widgets/platform_type.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 
-class HomeView extends StatefulWidget {
-  @override
-  _HomeViewState createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
+class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
