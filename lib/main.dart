@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scale_factor/constants/app_colors.dart';
 
 import 'ui/views/home_view.dart';
 
@@ -12,14 +13,9 @@ class ScaleFactor extends StatelessWidget {
     return MaterialApp(
       title: 'Scale Factor',
       theme: ThemeData.light().copyWith(
-        primaryColor: Color(0xFFFCF6F5),
-        scaffoldBackgroundColor: Color(0xCCFCF6F5),
+        scaffoldBackgroundColor: surfaceColor,
       ),
-      home: Container(
-        // To set default background color to white
-        color: Colors.white,
-        child: HomeView(),
-      ),
+      home: HomeView(),
     );
   }
 }

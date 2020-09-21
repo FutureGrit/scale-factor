@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scale_factor/constants/app_colors.dart';
 
 class DropdownInput extends StatefulWidget {
   final String defaultValue;
@@ -25,9 +26,9 @@ class _DropdownInputState extends State<DropdownInput> {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4.0),
-        color: Colors.white,
+        color: textBackgroundColor,
         border: Border.all(
-          color: Color(0xFFFF3D00),
+          color: borderColor,
         ),
       ),
       child: DropdownButtonHideUnderline(
@@ -43,7 +44,7 @@ class _DropdownInputState extends State<DropdownInput> {
               fontSize: 16.0,
               fontFamily: 'RedHatText',
               fontWeight: FontWeight.w500,
-              color: Color(0xFF023047),
+              color: textColor,
               letterSpacing: 1.5,
             ),
             items: widget.items.map<DropdownMenuItem<String>>((String value) {

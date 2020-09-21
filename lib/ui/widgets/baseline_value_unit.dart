@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scale_factor/constants/app_colors.dart';
 
 import 'dropdown_input.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
@@ -63,7 +64,7 @@ class _BaselineValueUnitState extends State<BaselineValueUnit> {
                   fontSize: 17,
                   fontFamily: 'RedHatText',
                   fontWeight: FontWeight.w500,
-                  color: Color(0xFF023047),
+                  color: textColor,
                   letterSpacing: 1.5,
                 ),
                 maxLines: 1,
@@ -73,19 +74,19 @@ class _BaselineValueUnitState extends State<BaselineValueUnit> {
                 decoration: InputDecoration(
                   isDense: false,
                   contentPadding: EdgeInsets.all(14.0),
-                  fillColor: Colors.white,
+                  fillColor: textBackgroundColor,
                   filled: true,
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
                     borderSide: BorderSide(
-                      color: Color(0xFFFF3D00),
+                      color: borderColor,
                       width: 1.0,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
                     borderSide: BorderSide(
-                      color: Color(0xFFFF3D00),
+                      color: borderColor,
                       width: 1.0,
                     ),
                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scale_factor/constants/app_colors.dart';
 
 import '../custom_icons.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
@@ -42,12 +43,11 @@ class _PlatformTypeState extends State<PlatformType> {
           ),
           borderWidth: borderWidth,
           borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-          // TODO: Create const for Color Hex alpha values
-          color: Color(0x80486D87),
-          borderColor: Color(0xFFFF3D00),
-          selectedBorderColor: Color(0xFFFF3D00),
-          selectedColor: Color(0xFFFCF5EF),
-          fillColor: Color(0xFFFF3D00),
+          color: iconInactiveColor,
+          selectedColor: iconActiveColor,
+          borderColor: borderColor,
+          selectedBorderColor: borderColor,
+          fillColor: accentColor,
           children: [
             Text(
               'BOTH',

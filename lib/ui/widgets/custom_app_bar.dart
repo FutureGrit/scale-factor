@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scale_factor/constants/app_colors.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 
 import 'custom_icon_button.dart';
@@ -8,7 +9,7 @@ const titleTextStyle = TextStyle(
   fontSize: 30,
   fontFamily: 'RedHatText',
   fontWeight: FontWeight.w900,
-  color: Color(0xFF023047),
+  color: textColor,
   letterSpacing: 7,
 );
 
@@ -41,14 +42,13 @@ class CustomAppBar extends StatelessWidget {
             CustomIconButton(
               // This is Information icon
               icon: CustomIcons.info,
-              backgroundColor: Color(0xFFFF3D00),
             ),
             horizontalSpaceMedium,
             CustomIconButton(
               // This is Dark-Mode icon
               icon: CustomIcons.dark_mode,
-              iconColor: Color(0xFFFF3D00),
-              backgroundColor: Color(0xFF0F171C),
+              iconColor: switchModeButtonIconColor,
+              backgroundColor: switchModeButtonBackgroundColor,
             )
           ],
         ),
