@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:scale_factor/constants/app_colors.dart';
+import 'package:scale_factor/utils/shared_styles.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 
 import 'custom_icon_button.dart';
 import '../custom_icons.dart';
-
-const titleTextStyle = TextStyle(
-  fontSize: 30,
-  fontFamily: 'RedHatText',
-  fontWeight: FontWeight.w900,
-  color: textColor,
-  letterSpacing: 7,
-);
 
 class CustomAppBar extends StatelessWidget {
   @override
@@ -30,11 +23,11 @@ class CustomAppBar extends StatelessWidget {
                 children: [
                   Text(
                     'Scale',
-                    style: titleTextStyle,
+                    style: appTitleTextStyle,
                   ),
                   Text(
                     'Factor',
-                    style: titleTextStyle,
+                    style: appTitleTextStyle,
                   ),
                 ],
               ),

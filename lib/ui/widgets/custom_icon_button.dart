@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:scale_factor/constants/app_colors.dart';
+import 'package:scale_factor/utils/shared_styles.dart';
 
 const iconSize = 28.0;
 const iconPadding = 12.0;
-const buttonBorderRadius = 6.0;
 const List<BoxShadow> buttonShadow = [
   BoxShadow(
     color: shadowColor,
@@ -29,7 +29,7 @@ class CustomIconButton extends StatelessWidget {
         shadows: buttonShadow,
         color: backgroundColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(buttonBorderRadius)),
+          borderRadius: BorderRadius.circular(borderRadiusNormal),
         ),
       ),
       child: IconButton(

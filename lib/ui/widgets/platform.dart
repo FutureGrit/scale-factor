@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:scale_factor/constants/app_colors.dart';
+import 'package:scale_factor/utils/shared_styles.dart';
 
 import '../custom_icons.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 
-const borderWidth = 1.0;
-const borderRadius = 4.0;
 const toggleButtonsHeight = 48.0;
 const iconSize = 28.0;
-const labelTextStyle = TextStyle(
-  fontFamily: 'RedHatText',
-  fontSize: 12.0,
-  letterSpacing: 2.0,
-);
 
 class PlatformType extends StatefulWidget {
   @override
@@ -36,13 +30,13 @@ class _PlatformTypeState extends State<PlatformType> {
           constraints: BoxConstraints.expand(
             //TODO: Find another way to set width
             width: ((MediaQuery.of(context).size.width) -
-                    ((isSelected.length + 1) * borderWidth) -
+                    ((isSelected.length + 1) * borderWidthNormal) -
                     (horizontalPaddingLarge * 2)) /
                 isSelected.length,
             height: toggleButtonsHeight,
           ),
-          borderWidth: borderWidth,
-          borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+          borderWidth: borderWidthNormal,
+          borderRadius: BorderRadius.circular(borderRadiusSmall),
           color: iconInactiveColor,
           selectedColor: iconActiveColor,
           borderColor: borderColor,

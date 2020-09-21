@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:scale_factor/constants/app_colors.dart';
+import 'package:scale_factor/utils/shared_styles.dart';
 
 import 'dropdown_input.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
-
-const labelTextStyle = TextStyle(
-  fontFamily: 'RedHatText',
-  fontSize: 12.0,
-  letterSpacing: 2.0,
-);
 
 class BaselineValueUnit extends StatefulWidget {
   @override
@@ -60,13 +55,7 @@ class _BaselineValueUnitState extends State<BaselineValueUnit> {
                   //TODO: Update table
                 },
                 //TODO: set length to 6
-                style: TextStyle(
-                  fontSize: 17,
-                  fontFamily: 'RedHatText',
-                  fontWeight: FontWeight.w500,
-                  color: textColor,
-                  letterSpacing: 1.5,
-                ),
+                style: inputFieldTextStyle,
                 maxLines: 1,
                 autofocus: false,
                 autocorrect: false,
@@ -77,17 +66,17 @@ class _BaselineValueUnitState extends State<BaselineValueUnit> {
                   fillColor: textBackgroundColor,
                   filled: true,
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                    borderRadius: BorderRadius.circular(borderRadiusSmall),
                     borderSide: BorderSide(
                       color: borderColor,
-                      width: 1.0,
+                      width: borderWidthNormal,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                    borderRadius: BorderRadius.circular(borderRadiusSmall),
                     borderSide: BorderSide(
                       color: borderColor,
-                      width: 1.0,
+                      width: borderWidthNormal,
                     ),
                   ),
                   hintText: '24',
