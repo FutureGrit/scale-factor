@@ -30,11 +30,18 @@ const tableHeaderStyle = TextStyle(
   color: textColor,
   letterSpacing: 2.0,
 );
-
+//TODO: Change black color
 const tableTextStyle = TextStyle(
   fontSize: 12,
   fontFamily: 'RedHatText',
   color: Colors.black,
+  letterSpacing: 1.0,
+);
+
+const tableSelectedRowTextStyle = TextStyle(
+  fontSize: 12,
+  fontFamily: 'RedHatText',
+  color: Colors.red,
   letterSpacing: 1.0,
 );
 

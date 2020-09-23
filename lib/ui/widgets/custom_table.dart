@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:scale_factor/ui/widgets/table_data_cell.dart';
 import 'package:scale_factor/utils/shared_styles.dart';
 
 class CustomTable extends StatelessWidget {
@@ -7,6 +9,7 @@ class CustomTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Table(
@@ -19,7 +22,7 @@ class CustomTable extends StatelessWidget {
             children: [
               TableRow(
                 children: [
-                  Text('Scale', style: tableHeaderStyle),
+                  Center(child: Text('Scale', style: tableHeaderStyle)),
                   Text('DP', style: tableHeaderStyle),
                   Text('PT', style: tableHeaderStyle),
                   Text('PX', style: tableHeaderStyle)
@@ -47,27 +50,27 @@ class CustomTable extends StatelessWidget {
               ]),
 
               // ldpi
-              TableRow(children: [
-                TableCell(
-                  verticalAlignment: TableCellVerticalAlignment.middle,
-                  child: Text(
-                    'ldpi',
-                    style: tableTextStyle,
-                  ),
-                ),
-                Text(
-                  '25.00',
-                  style: tableTextStyle,
-                ),
-                Text(
-                  '',
-                  style: tableTextStyle,
-                ),
-                Text(
-                  '18.75',
-                  style: tableTextStyle,
-                ),
-              ]),
+              TableRow(
+                  decoration: 'ONE' == 'ONE'
+                      ? BoxDecoration(
+                          color: Colors.pinkAccent,
+                          borderRadius: BorderRadius.circular(5))
+                      : null,
+                  children: [
+                    TableDataCell(
+                      value: 'ldpi6',
+                      alignment: Alignment.centerLeft,
+                    ),
+                    TableDataCell(
+                      value: '25.00',
+                    ),
+                    TableDataCell(
+                      value: '',
+                    ),
+                    TableDataCell(
+                      value: '18.75',
+                    ),
+                  ]),
 
               // mdpi
               TableRow(children: [
