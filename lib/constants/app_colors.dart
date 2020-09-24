@@ -26,6 +26,9 @@ const Color shadowColor = Color(0x40000000);
 const Color switchModeButtonBackgroundColor = Color(0xFF0F171C);
 const Color switchModeButtonIconColor = Color(0xFFFF3D00);
 
+// ---- Table border color --------
+const tableBorderColor = Color(0x59BDBDBD);
+
 /// Take your opacity as decimal value and multiply it by 255. So, if opacity
 /// is 38% then the decimal value would be .38
 /// and multiplication: .38 * 255 = 96.9

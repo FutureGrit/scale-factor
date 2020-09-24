@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:scale_factor/enums/platform.dart';
 
+import 'package:scale_factor/enums/platform.dart';
 import 'package:scale_factor/ui/widgets/baseline_value_unit.dart';
 import 'package:scale_factor/ui/widgets/custom_app_bar.dart';
 import 'package:scale_factor/ui/widgets/platform_type.dart';
@@ -36,7 +36,6 @@ class HomeView extends StatelessWidget {
               )
             ],
           ),
-          // TODO 2: Create output section
         ),
       ),
     );

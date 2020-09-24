@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const marginLarge = 24.0;
+
 const horizontalPaddingLarge = 24.0;
 const verticalPaddingSmall = 8.0;
 

@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:scale_factor/utils/shared_styles.dart';
-
-// TODO: Should I move this class as a widget in table
 
 class TableDataCell extends StatelessWidget {
   TableDataCell(
       {@required this.value,
       this.textStyle,
-      this.alignment = Alignment.center});
+      this.alignment = Alignment.center,
+      this.padding = 12.0});
 
   final String value;
   final Alignment alignment;
+  final double padding;
   final TextStyle textStyle;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
-      padding: EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(padding),
       alignment: alignment,
       child: Text(
         value,
@@ -29,4 +27,3 @@ class TableDataCell extends StatelessWidget {
 // TODO: Text Alignment customization parameter
 // TODO: Padding parameter
 // TODO: background color parameter
-// TODO:

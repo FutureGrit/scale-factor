@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:scale_factor/enums/platform.dart';
 import 'package:scale_factor/ui/widgets/tables/android_platform_table.dart';
 import 'package:scale_factor/ui/widgets/tables/both_platform_table.dart';
@@ -13,6 +14,7 @@ class TableType extends StatelessWidget {
   Widget build(BuildContext context) {
     if (Platform.Both == platform) {
       return BothPlatformTable(
+        // TODO: Get value from  TextField
         value: 25.0,
       );
     } else if (Platform.Android == platform) {
@@ -24,10 +26,5 @@ class TableType extends StatelessWidget {
         value: 25,
       );
     }
-    // TODO: set condition for Android and iOS table
-    return Container(
-      color: Colors.yellow,
-      height: 200,
-    );
   }
 }

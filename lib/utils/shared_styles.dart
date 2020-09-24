@@ -47,5 +47,6 @@ const tableSelectedRowTextStyle = TextStyle(
 
 const borderRadiusSmall = 4.0;
 const borderRadiusNormal = 6.0;
-
 const borderWidthNormal = 1.0;
+
+const tableBorderSize = 1.0;
