@@ -1,6 +1,3 @@
-// TODO: Create table for android only: remove PT and
-// update rows first cell text(remove 1x, 2x and 3x)
-
 import 'package:flutter/material.dart';
 import 'package:scale_factor/models/row.dart';
 import 'package:scale_factor/ui/widgets/table_data_cell.dart';
@@ -10,25 +7,22 @@ class AndroidPlatformTable extends StatelessWidget {
   AndroidPlatformTable({@required this.value});
 
   final double value;
-  final List header = ['Scale', 'DP', 'PT', 'PX'];
+  final List header = ['Scale', 'DP', 'PX'];
 
   @override
   Widget build(BuildContext context) {
-    int selectedRow = 1;
     List<CustomRow> customRows = [
       // ldpi
       CustomRow(
         scaleType: 'ldpi',
         dp: '$value',
-        pt: '',
         px: convertValue(factor: .75),
       ),
 
       // mdpi
       CustomRow(
-        scaleType: 'mdpi - 1x',
+        scaleType: 'mdpi',
         dp: '$value',
-        pt: '$value',
         px: convertValue(factor: 1.0),
       ),
 
@@ -36,23 +30,20 @@ class AndroidPlatformTable extends StatelessWidget {
       CustomRow(
         scaleType: 'hdpi',
         dp: '$value',
-        pt: '',
         px: convertValue(factor: 1.50),
       ),
 
       // xhdpi
       CustomRow(
-        scaleType: 'xhdpi - 2x',
+        scaleType: 'xhdpi',
         dp: '$value',
-        pt: '$value',
         px: convertValue(factor: 2.0),
       ),
 
       // xxhdpi
       CustomRow(
-        scaleType: 'xxhdpi - 3x',
+        scaleType: 'xxhdpi',
         dp: '$value',
-        pt: '$value',
         px: convertValue(factor: 3.0),
       ),
 
@@ -60,72 +51,52 @@ class AndroidPlatformTable extends StatelessWidget {
       CustomRow(
         scaleType: 'xxxhdpi',
         dp: '$value',
-        pt: '',
         px: convertValue(factor: 4.0),
       )
     ];
 
     return Container(
       //color: Colors.yellow,
-      margin: EdgeInsets.only(top: 16.0),
+      margin: EdgeInsets.only(top: 24.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Table(
             border: TableBorder(
               verticalInside: BorderSide(
-                  width: 1, color: Colors.blue, style: BorderStyle.solid),
+                  // TODO: Remove hard coded border color
+                  width: 1,
+                  color: Color(0x59BDBDBD),
+                  style: BorderStyle.solid),
             ),
-            columnWidths: {0: FractionColumnWidth(0.26)},
+            // TODO: Column width need to be changed for each type of platform
+            //columnWidths: {0: FractionColumnWidth(0.29)},
             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
             children: [
-              // Table headers
+              // Table headers columns
               TableRow(
                 children: header
-                    .map((columnTitle) => Text(
-                          columnTitle,
-                          style: tableHeaderStyle,
+                    .map((columnTitle) => TableDataCell(
+                          value: columnTitle,
+                          alignment: Alignment.center,
+                          textStyle: tableHeaderStyle,
                         ))
                     .toList(),
               ),
 
+              // Header separator line
+              TableRow(children: [
+                for (int i = 0; i < header.length; i++)
+                  Divider(
+                    color: Color(0x59BDBDBD),
+                    // TODO: const for hard coded height
+                    height: 2,
+                  )
+              ]),
+
+              // Table data rows
               for (int i = 0; i < customRows.length; i++)
                 getRow(row: customRows[i], currentIndex: i),
-              // TableRow(children: [
-              //   Text(customRows[i].scaleType),
-              //   Text(customRows[i].dp),
-              //   Text(customRows[i].pt),
-              //   Text(customRows[i].px),
-              //]),
-
-              // Row create type 2
-              // for (CustomRow row in customRows)
-              //   TableRow(children: [
-              //     Text(row.scaleType),
-              //     Text(row.dp),
-              //     Text(row.pt),
-              //     Text(row.px),
-              //   ]),
-              //
-              // // Row create type 3
-              // // Table Rows
-              // ...customRows
-              //     .map(
-              //       (row) => TableRow(
-              //         //TODO: selected:
-              //         children: [
-              //           TableDataCell(
-              //             value: row.scaleType,
-              //             alignment: Alignment.centerLeft,
-              //           ),
-              //           //Text(row.scaleType, style: tableTextStyle),
-              //           Text(row.dp, style: tableTextStyle),
-              //           Text(row.pt, style: tableTextStyle),
-              //           Text(row.px, style: tableTextStyle),
-              //         ],
-              //       ),
-              //     )
-              //     .toList(),
             ],
           ),
         ],
@@ -145,13 +116,9 @@ class AndroidPlatformTable extends StatelessWidget {
       textStyle = tableTextStyle.copyWith(color: Colors.red);
     }
     return TableRow(children: [
-      Text(row.scaleType, style: textStyle),
-      Text(row.dp, style: textStyle),
-      Text(row.pt, style: textStyle),
-      Text(
-        row.px,
-        style: textStyle,
-      ),
+      TableDataCell(value: row.scaleType, textStyle: textStyle),
+      TableDataCell(value: row.dp, textStyle: textStyle),
+      TableDataCell(value: row.px, textStyle: textStyle),
     ]);
   }
 }

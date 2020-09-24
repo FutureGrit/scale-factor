@@ -30,7 +30,9 @@ class HomeView extends StatelessWidget {
               verticalSpaceLarge,
               BaselineValueUnit(),
               TableType(
-                platform: Platform.Android,
+                platform: Platform.Both,
+                //platform: Platform.Android,
+                //platform: Platform.iOS,
               )
             ],
           ),
