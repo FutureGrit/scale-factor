@@ -31,6 +31,7 @@ class BothPlatformTable extends StatelessWidget {
     );
   }
 
+  // TODO: Move below logic to view model
   String convertValue({@required double factor}) {
     return (value * factor).toStringAsFixed(2);
   }

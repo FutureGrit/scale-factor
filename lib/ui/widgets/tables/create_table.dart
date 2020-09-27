@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:scale_factor/utils/shared_styles.dart';
-import 'package:scale_factor/constants/app_colors.dart';
+import 'package:scale_factor/ui/themes/shared_styles.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 import 'table_data_cell.dart';
 
@@ -23,7 +22,7 @@ class CreateTable extends StatelessWidget {
             border: TableBorder(
               verticalInside: BorderSide(
                   width: tableBorderSize,
-                  color: tableBorderColor,
+                  color: Theme.of(context).dividerColor,
                   style: BorderStyle.solid),
             ),
             // If columns are more then 3 then we have to manage the width of
@@ -41,7 +40,7 @@ class CreateTable extends StatelessWidget {
                     .map((columnTitle) => TableDataCell(
                           value: columnTitle,
                           alignment: Alignment.center,
-                          textStyle: tableHeaderStyle,
+                          textStyle: Theme.of(context).textTheme.bodyText1,
                         ))
                     .toList(),
               ),
@@ -50,14 +49,15 @@ class CreateTable extends StatelessWidget {
               TableRow(children: [
                 for (int i = 0; i < headers.length; i++)
                   Divider(
-                    color: tableBorderColor,
+                    color: Theme.of(context).dividerColor,
+                    thickness: tableBorderSize,
                     height: tableBorderSize,
                   )
               ]),
 
               // Table data rows
               for (int i = 0; i < rows.length; i++)
-                getRow(row: rows[i], currentIndex: i),
+                getRow(row: rows[i], currentIndex: i, context: context),
             ],
           ),
         ],
@@ -65,13 +65,16 @@ class CreateTable extends StatelessWidget {
     );
   }
 
-  TableRow getRow({@required List row, int currentIndex}) {
+  TableRow getRow(
+      {@required List row, int currentIndex, @required BuildContext context}) {
+    // TODO: Remove context from function
     // TODO: service for setting selectedIndex value from BASELINE dropdown
     int selectedIndex = 1;
-    TextStyle textStyle = tableTextStyle;
+    TextStyle textStyle = Theme.of(context).textTheme.bodyText2;
 
     if (currentIndex == selectedIndex) {
-      textStyle = tableTextStyle.copyWith(color: Colors.red);
+      textStyle =
+          tableTextStyle.copyWith(color: Theme.of(context).selectedRowColor);
     }
 
     return TableRow(children: [

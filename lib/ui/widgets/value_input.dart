@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:scale_factor/constants/app_colors.dart';
-import 'package:scale_factor/utils/shared_styles.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 
 class ValueInput extends StatefulWidget {
@@ -17,7 +15,7 @@ class _ValueInputState extends State<ValueInput> {
       children: [
         Text(
           ' VALUE',
-          style: labelTextStyle,
+          style: Theme.of(context).textTheme.headline6,
         ),
         verticalSpaceSmall,
         TextField(
@@ -25,32 +23,11 @@ class _ValueInputState extends State<ValueInput> {
             //TODO: Update table
           },
           //TODO: set length to 6
-          style: inputFieldTextStyle,
+          style: Theme.of(context).textTheme.headline3,
           maxLines: 1,
           autofocus: false,
           autocorrect: false,
           keyboardType: TextInputType.number,
-          decoration: InputDecoration(
-            isDense: false,
-            contentPadding: EdgeInsets.all(14.0),
-            fillColor: textBackgroundColor,
-            filled: true,
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(borderRadiusSmall),
-              borderSide: BorderSide(
-                color: borderColor,
-                width: borderWidthNormal,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(borderRadiusSmall),
-              borderSide: BorderSide(
-                color: borderColor,
-                width: borderWidthNormal,
-              ),
-            ),
-            hintText: '24',
-          ),
         ),
       ],
     );

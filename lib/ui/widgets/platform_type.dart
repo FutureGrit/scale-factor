@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:scale_factor/constants/app_colors.dart';
-import 'package:scale_factor/utils/shared_styles.dart';
 import '../custom_icons.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 
@@ -23,7 +21,7 @@ class _PlatformTypeState extends State<PlatformType> {
       children: [
         Text(
           ' PLATFORM',
-          style: labelTextStyle,
+          style: Theme.of(context).textTheme.headline6,
         ),
         verticalSpaceSmall,
         ToggleButtons(
@@ -35,15 +33,10 @@ class _PlatformTypeState extends State<PlatformType> {
                 isSelected.length,
             height: toggleButtonsHeight,
           ),
-          borderWidth: borderWidthNormal,
-          borderRadius: BorderRadius.circular(borderRadiusSmall),
-          color: iconInactiveColor,
-          selectedColor: iconActiveColor,
-          borderColor: borderColor,
-          selectedBorderColor: borderColor,
-          fillColor: accentColor,
+          //fillColor: Theme.of(context).accentColor,
           children: [
             Text(
+              // TODO: Set theme for this
               'BOTH',
               style: TextStyle(
                 fontSize: 18.0,
