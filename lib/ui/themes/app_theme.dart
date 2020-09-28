@@ -8,7 +8,6 @@ class AppTheme {
 
   // -------------------- Light Theme --------------------
   static final ThemeData lightTheme = ThemeData(
-    // TODO: set light theme colors
     scaffoldBackgroundColor: mainBackgroundColorLight,
     accentColor: accentColorOnLight,
     textTheme: TextTheme(

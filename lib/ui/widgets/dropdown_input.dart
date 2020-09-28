@@ -48,10 +48,13 @@ class _DropdownInputState extends State<DropdownInput> {
           child: DropdownButtonHideUnderline(
             child: ButtonTheme(
               alignedDropdown: true,
-              // TODO: Change color of down arrow
               child: DropdownButton<String>(
-                dropdownColor: Theme.of(context).cardColor,
                 value: dropdownValue,
+                dropdownColor: Theme.of(context).cardColor,
+                icon: Icon(
+                  Icons.arrow_drop_down,
+                  color: Theme.of(context).focusColor,
+                ),
                 isExpanded: true,
                 isDense: false,
                 style: Theme.of(context).textTheme.headline3,

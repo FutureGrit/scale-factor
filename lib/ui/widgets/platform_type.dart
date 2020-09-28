@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../custom_icons.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
+import 'package:scale_factor/ui/themes/shared_styles.dart';
 
 const toggleButtonsHeight = 48.0;
 const iconSize = 28.0;
@@ -26,24 +27,16 @@ class _PlatformTypeState extends State<PlatformType> {
         verticalSpaceSmall,
         ToggleButtons(
           constraints: BoxConstraints.expand(
-            //TODO: Find another way to set width
             width: ((MediaQuery.of(context).size.width) -
                     ((isSelected.length + 1) * borderWidthNormal) -
                     (horizontalPaddingLarge * 2)) /
                 isSelected.length,
             height: toggleButtonsHeight,
           ),
-          //fillColor: Theme.of(context).accentColor,
           children: [
             Text(
-              // TODO: Set theme for this
               'BOTH',
-              style: TextStyle(
-                fontSize: 18.0,
-                letterSpacing: 3.0,
-                fontFamily: 'RedHatText',
-                fontWeight: FontWeight.w900,
-              ),
+              style: bothPlatformIconLabel,
             ),
             Icon(
               CustomIcons.android,

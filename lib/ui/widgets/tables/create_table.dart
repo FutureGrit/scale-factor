@@ -13,8 +13,6 @@ class CreateTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //color: Colors.yellow,
-      margin: EdgeInsets.only(top: marginLarge),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

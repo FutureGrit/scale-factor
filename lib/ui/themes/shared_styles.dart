@@ -21,6 +21,25 @@ const labelTextStyle = TextStyle(
   color: textColorOnLight,
 );
 
+// ---- Toggle Button Style ----
+final toggleButtonStyle = ToggleButtonsThemeData(
+  borderWidth: borderWidthNormal,
+  borderRadius: BorderRadius.circular(borderRadiusSmall),
+  color: iconInactiveColorOnLight,
+  selectedColor: iconActiveColorOnLight,
+  borderColor: borderColorOnLight,
+  selectedBorderColor: borderColorOnLight,
+  fillColor: accentColorOnLight,
+);
+
+// ---- BOTH icon label in toggle button ----
+final bothPlatformIconLabel = TextStyle(
+  fontSize: 18.0,
+  letterSpacing: 3.0,
+  fontFamily: 'RedHatText',
+  fontWeight: FontWeight.w900,
+);
+
 // ---- Input Field Text Style ----
 const inputFieldTextStyle = TextStyle(
   fontSize: 16,
@@ -69,13 +88,11 @@ const tableTextStyle = TextStyle(
   letterSpacing: 1.0,
 );
 
-// ---- Toggle Button Style ----
-final toggleButtonStyle = ToggleButtonsThemeData(
-  borderWidth: borderWidthNormal,
-  borderRadius: BorderRadius.circular(borderRadiusSmall),
-  color: iconInactiveColorOnLight,
-  selectedColor: iconActiveColorOnLight,
-  borderColor: borderColorOnLight,
-  selectedBorderColor: borderColorOnLight,
-  fillColor: accentColorOnLight,
+// ---- Watermark Text Style ----
+const watermarkTextStyle = TextStyle(
+  color: Color(0xFFC4C4C4),
+  fontSize: 10,
+  letterSpacing: 2.0,
+  fontFamily: 'RedHatText',
+  fontWeight: FontWeight.w500,
 );

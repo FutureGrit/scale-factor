@@ -58,8 +58,6 @@ class CustomAppBar extends StatelessWidget {
                   ? switchModeButtonColorOnDark
                   : switchModeButtonColorOnLight,
               onPressed: () {
-                // TODO: check is darkModeEnabled == false then set it to
-                // true and vice versa and rebuild UI
                 Provider.of<AppThemeService>(context, listen: false)
                     .updateTheme(!isDarkModeOn);
               },

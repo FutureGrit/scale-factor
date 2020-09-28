@@ -40,10 +40,7 @@ class CustomIconButton extends StatelessWidget {
           iconSize: iconSize,
           icon: Icon(icon),
           color: iconColor,
-          onPressed: onPressed //() {
-          // TODO: Implement functionality
-          //},
-          ),
+          onPressed: onPressed),
     );
   }
 }
