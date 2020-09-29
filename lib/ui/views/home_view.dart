@@ -21,26 +21,25 @@ class HomeView extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: Container(
           padding: EdgeInsets.symmetric(
-              horizontal: horizontalPaddingLarge,
-              vertical: verticalPaddingSmall),
+              horizontal: kPaddingLarge, vertical: kPaddingSmall),
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               PlatformType(),
-              verticalSpaceLarge,
+              kVerticalSpaceLarge,
               BaselineValueUnit(),
-              verticalSpaceLarge,
+              kVerticalSpaceLarge,
               TableType(
                 platform: Platform.Both,
                 //platform: Platform.Android,
                 //platform: Platform.iOS,
               ),
-              verticalSpaceLarge,
+              kVerticalSpaceLarge,
               Center(
                 child: Text(
                   '#FutureGrit',
-                  style: watermarkTextStyle.copyWith(
+                  style: kWatermarkTextStyle.copyWith(
                       color: Theme.of(context).dividerColor),
                 ),
               )

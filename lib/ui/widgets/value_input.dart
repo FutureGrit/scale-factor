@@ -17,7 +17,7 @@ class _ValueInputState extends State<ValueInput> {
           ' VALUE',
           style: Theme.of(context).textTheme.headline6,
         ),
-        verticalSpaceSmall,
+        kVerticalSpaceSmall,
         TextField(
           onTap: () {
             //TODO: Update table

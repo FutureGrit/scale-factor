@@ -14,7 +14,8 @@ class CustomAppBar extends StatelessWidget {
 
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
+        padding: const EdgeInsets.fromLTRB(
+            kPaddingLarge, kPaddingSmall, kPaddingLarge, kPaddingMedium),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -38,25 +39,26 @@ class CustomAppBar extends StatelessWidget {
             CustomIconButton(
               // This is Information icon
               icon: CustomIcons.info,
-              iconColor:
-                  isDarkModeOn ? iconActiveColorOnDark : iconActiveColorOnLight,
+              iconColor: isDarkModeOn
+                  ? kIconActiveColorOnDark
+                  : kIconActiveColorOnLight,
               backgroundColor: Theme.of(context).accentColor,
               onPressed: () {
                 // TODO: Navigate to screen information.dart this screen will
                 //  provide information and guideline for android and iOS
               },
             ),
-            horizontalSpaceMedium,
+            kHorizontalSpaceMedium,
             CustomIconButton(
               // This is Dark-Mode icon
               icon:
                   isDarkModeOn ? CustomIcons.light_mode : CustomIcons.dark_mode,
               iconColor: isDarkModeOn
-                  ? switchModeButtonIconColorOnDark
-                  : switchModeButtonIconColorOnLight,
+                  ? kSwitchModeButtonIconColorOnDark
+                  : kSwitchModeButtonIconColorOnLight,
               backgroundColor: isDarkModeOn
-                  ? switchModeButtonColorOnDark
-                  : switchModeButtonColorOnLight,
+                  ? kSwitchModeButtonColorOnDark
+                  : kSwitchModeButtonColorOnLight,
               onPressed: () {
                 Provider.of<AppThemeService>(context, listen: false)
                     .updateTheme(!isDarkModeOn);

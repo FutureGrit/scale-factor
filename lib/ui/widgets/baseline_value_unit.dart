@@ -22,7 +22,7 @@ class BaselineValueUnit extends StatelessWidget {
           ),
         ),
 
-        horizontalSpaceMedium,
+        kHorizontalSpaceMedium,
 
         // VALUE label and TextView
         Expanded(
@@ -30,7 +30,7 @@ class BaselineValueUnit extends StatelessWidget {
           child: ValueInput(),
         ),
 
-        horizontalSpaceMedium,
+        kHorizontalSpaceMedium,
 
         // UNIT label and Dropdown
         Expanded(

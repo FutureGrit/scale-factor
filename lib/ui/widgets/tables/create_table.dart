@@ -19,7 +19,7 @@ class CreateTable extends StatelessWidget {
           Table(
             border: TableBorder(
               verticalInside: BorderSide(
-                  width: tableBorderSize,
+                  width: kTableBorderSize,
                   color: Theme.of(context).dividerColor,
                   style: BorderStyle.solid),
             ),
@@ -48,8 +48,8 @@ class CreateTable extends StatelessWidget {
                 for (int i = 0; i < headers.length; i++)
                   Divider(
                     color: Theme.of(context).dividerColor,
-                    thickness: tableBorderSize,
-                    height: tableBorderSize,
+                    thickness: kTableBorderSize,
+                    height: kTableBorderSize,
                   )
               ]),
 
@@ -72,7 +72,7 @@ class CreateTable extends StatelessWidget {
 
     if (currentIndex == selectedIndex) {
       textStyle =
-          tableTextStyle.copyWith(color: Theme.of(context).selectedRowColor);
+          kTableTextStyle.copyWith(color: Theme.of(context).selectedRowColor);
     }
 
     return TableRow(children: [

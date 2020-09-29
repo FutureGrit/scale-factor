@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../custom_icons.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
-import 'package:scale_factor/ui/themes/shared_styles.dart';
-
-const toggleButtonsHeight = 48.0;
-const iconSize = 28.0;
 
 class PlatformType extends StatefulWidget {
   @override
@@ -24,27 +20,26 @@ class _PlatformTypeState extends State<PlatformType> {
           ' PLATFORM',
           style: Theme.of(context).textTheme.headline6,
         ),
-        verticalSpaceSmall,
+        kVerticalSpaceSmall,
         ToggleButtons(
           constraints: BoxConstraints.expand(
             width: ((MediaQuery.of(context).size.width) -
-                    ((isSelected.length + 1) * borderWidthNormal) -
-                    (horizontalPaddingLarge * 2)) /
+                    ((isSelected.length + 1) * kBorderWidthNormal) -
+                    (kPaddingLarge * 2)) /
                 isSelected.length,
-            height: toggleButtonsHeight,
+            height: kToggleButtonsHeight,
           ),
           children: [
             Text(
               'BOTH',
-              style: bothPlatformIconLabel,
             ),
             Icon(
               CustomIcons.android,
-              size: iconSize,
+              size: kToggleButtonIconSize,
             ),
             Icon(
               CustomIcons.ios,
-              size: iconSize,
+              size: kToggleButtonIconSize,
             )
           ],
           isSelected: isSelected,

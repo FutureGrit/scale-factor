@@ -34,15 +34,15 @@ class _DropdownInputState extends State<DropdownInput> {
           widget.label,
           style: Theme.of(context).textTheme.headline6,
         ),
-        verticalSpaceSmall,
+        kVerticalSpaceSmall,
         Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(borderRadiusSmall),
+            borderRadius: BorderRadius.circular(kBorderRadiusSmall),
             color: Theme.of(context).backgroundColor,
             border: Border.all(
               color: Theme.of(context).focusColor,
-              width: borderWidthNormal,
+              width: kBorderWidthNormal,
             ),
           ),
           child: DropdownButtonHideUnderline(
