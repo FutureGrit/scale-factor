@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:scale_factor/services/app_theme_service.dart';
 import 'package:scale_factor/ui/themes/app_colors.dart';
+import 'package:scale_factor/ui/views/information_view.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 import 'custom_icon_button.dart';
 import '../custom_icons.dart';
@@ -44,8 +45,10 @@ class CustomAppBar extends StatelessWidget {
                   : kIconActiveColorOnLight,
               backgroundColor: Theme.of(context).accentColor,
               onPressed: () {
-                // TODO: Navigate to screen information.dart this screen will
-                //  provide information and guideline for android and iOS
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => InformationView()),
+                );
               },
             ),
             kHorizontalSpaceMedium,
