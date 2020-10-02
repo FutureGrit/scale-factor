@@ -16,7 +16,7 @@ class CustomIconButton extends StatelessWidget {
       {@required this.icon,
       @required this.iconColor,
       this.backgroundColor = kAccentColorOnLight,
-      this.onPressed});
+      @required this.onPressed});
 
   final IconData icon;
   final Color backgroundColor;

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'package:scale_factor/services/home_view_service.dart';
 import '../custom_icons.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 
@@ -9,7 +11,15 @@ class PlatformType extends StatefulWidget {
 }
 
 class _PlatformTypeState extends State<PlatformType> {
-  List<bool> isSelected = [true, false, false];
+  List<bool> isSelected;
+  var platformType;
+
+  @override
+  void initState() {
+    platformType = Provider.of<HomeViewService>(context, listen: false);
+    isSelected = platformType.isSelected;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,15 +54,8 @@ class _PlatformTypeState extends State<PlatformType> {
           ],
           isSelected: isSelected,
           onPressed: (int index) {
-            setState(() {
-              for (int buttonIndex = 0;
-                  buttonIndex < isSelected.length;
-                  buttonIndex++) {
-                isSelected[buttonIndex] = buttonIndex == index;
-              }
-              // TODO: Set value of editText and dropdown to default as per selected platform
-              // TODO: Clear table
-            });
+            platformType.updateTableType(index);
+            // TODO: Set value of editText and dropdown to default as per selected platform
           },
         ),
       ],
