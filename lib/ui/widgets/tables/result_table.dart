@@ -10,8 +10,9 @@ import 'package:scale_factor/ui/widgets/tables/ios_platform_table.dart';
 class ResultTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var selectedPlatform =
-        Provider.of<HomeViewService>(context, listen: false).selectedPlatform;
+    var selectedPlatform = Provider.of<HomeViewService>(context, listen: false)
+        .selectedPlatform
+        .platform;
 
     if (selectedPlatform == Platform.Both) {
       return BothPlatformTable(

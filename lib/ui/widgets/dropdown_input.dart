@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:scale_factor/services/home_view_service.dart';
 
 import 'package:scale_factor/utils/ui_utils.dart';
 
@@ -6,11 +8,13 @@ class DropdownInput extends StatefulWidget {
   final String label;
   final String defaultValue;
   final List<String> items;
+  final Function onChange;
 
   DropdownInput(
       {@required this.label,
       @required this.items,
-      @required this.defaultValue});
+      @required this.defaultValue,
+      @required this.onChange});
 
   @override
   _DropdownInputState createState() => _DropdownInputState();
@@ -18,11 +22,13 @@ class DropdownInput extends StatefulWidget {
 
 class _DropdownInputState extends State<DropdownInput> {
   String dropdownValue;
+  var platform;
 
   @override
   void initState() {
     super.initState();
-    dropdownValue = widget.defaultValue;
+    platform = Provider.of<HomeViewService>(context, listen: false);
+    //dropdownValue = widget.defaultValue;
   }
 
   @override
@@ -49,7 +55,7 @@ class _DropdownInputState extends State<DropdownInput> {
             child: ButtonTheme(
               alignedDropdown: true,
               child: DropdownButton<String>(
-                value: dropdownValue,
+                value: platform.dropdownValue, // TODO:
                 dropdownColor: Theme.of(context).cardColor,
                 icon: Icon(
                   Icons.arrow_drop_down,
@@ -69,11 +75,12 @@ class _DropdownInputState extends State<DropdownInput> {
                     ),
                   );
                 }).toList(),
-                onChanged: (String newValue) {
-                  setState(() {
-                    dropdownValue = newValue;
-                  });
-                },
+                onChanged: widget.onChange,
+                // onChanged: (String newValue) {
+                //   setState(() {
+                //     dropdownValue = newValue;
+                //   });
+                // },
               ),
             ),
           ),
