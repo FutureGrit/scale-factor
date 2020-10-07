@@ -6,10 +6,12 @@ class PlatformModel {
       {@required this.platform,
       @required this.scale,
       @required this.units,
-      @required this.defaultBaseline});
+      @required this.defaultBaselineIndex,
+      @required this.defaultUnitIndex});
 
   Platform platform;
   List<String> scale;
   List<String> units;
-  int defaultBaseline;
+  int defaultBaselineIndex;
+  int defaultUnitIndex;
 }

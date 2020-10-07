@@ -13,10 +13,11 @@ class HomeViewService extends ChangeNotifier {
   // TODO: Add new variable for defaultUnit value
 // TODO: Code Cleanup
 // TODO: Remove dropdown_input.dart
+  // TODO: Improve baseline_value_unit.dart file if required delete it.
 
   List<bool> isSelected = [true, false, false];
 
-  List<PlatformModel> allPlatforms = [
+  List<PlatformModel> _allPlatforms = [
     PlatformModel(
         platform: Platform.Both,
         scale: [
@@ -28,33 +29,33 @@ class HomeViewService extends ChangeNotifier {
           'xxxhdpi'
         ],
         units: ['PX', 'DP', 'PT'],
-        defaultBaseline: 1),
+        defaultBaselineIndex: 1,
+        defaultUnitIndex: 0),
     PlatformModel(
       platform: Platform.Android,
       scale: ['ldpi', 'mdpi', 'hdpi', 'xhdpi', 'xxhdpi', 'xxxhdpi'],
       units: ['PX', 'DP'],
-      defaultBaseline: 0,
+      defaultBaselineIndex: 1,
+      defaultUnitIndex: 0,
     ),
     PlatformModel(
-      platform: Platform.iOS,
-      scale: ['1x', '2x', '3x'],
-      units: ['PX', 'PT'],
-      defaultBaseline: 0,
-    ),
+        platform: Platform.iOS,
+        scale: ['1x', '2x', '3x'],
+        units: ['PX', 'PT'],
+        defaultBaselineIndex: 0,
+        defaultUnitIndex: 0),
   ];
 
   PlatformModel selectedPlatform;
   String selectedScale;
   String selectedUnit;
-  //String dropdownValue;
-  //String unitDropdownDefaultValue;
 
   void updateTableType(int index) {
-    this.selectedPlatform = allPlatforms[index];
+    this.selectedPlatform = _allPlatforms[index];
 
     // Set default value for dropdown: Baseline and Unit
-    updateScale(selectedPlatform.scale[selectedPlatform.defaultBaseline]);
-    updateUnit(selectedPlatform.units[selectedPlatform.defaultBaseline]);
+    updateScale(selectedPlatform.scale[selectedPlatform.defaultBaselineIndex]);
+    updateUnit(selectedPlatform.units[selectedPlatform.defaultUnitIndex]);
 
     // Set the selected platform toggle button
     for (int buttonIndex = 0; buttonIndex < isSelected.length; buttonIndex++) {
@@ -65,22 +66,22 @@ class HomeViewService extends ChangeNotifier {
   }
 
   void initialize() {
-    selectedPlatform = allPlatforms[0];
-    updateScale(selectedPlatform.scale[selectedPlatform.defaultBaseline]);
-    updateUnit(selectedPlatform.units[selectedPlatform.defaultBaseline]);
+    selectedPlatform = _allPlatforms[0];
+    updateScale(selectedPlatform.scale[selectedPlatform.defaultBaselineIndex]);
+    updateUnit(selectedPlatform.units[selectedPlatform.defaultUnitIndex]);
   }
 
   void updateScale(String newValue) {
-    //selectedScale = newValue;
     selectedScale = newValue;
-    // dropdownValue = newValue;
     notifyListeners();
   }
 
   void updateUnit(String newValue) {
     selectedUnit = newValue;
-    // dropdownValue = newValue;
-
     notifyListeners();
+  }
+
+  int getSelectedBaselineIndex() {
+    return selectedPlatform.scale.indexOf(selectedScale);
   }
 }

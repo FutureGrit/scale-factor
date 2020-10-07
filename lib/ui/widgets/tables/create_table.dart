@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:scale_factor/services/home_view_service.dart';
 
 import 'package:scale_factor/ui/themes/shared_styles.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
@@ -67,10 +69,13 @@ class CreateTable extends StatelessWidget {
       {@required List row, int currentIndex, @required BuildContext context}) {
     // TODO: Remove context from function
     // TODO: service for setting selectedIndex value from BASELINE dropdown
-    int selectedIndex = 1;
+
+    int selectedBaselineIndex =
+        Provider.of<HomeViewService>(context, listen: false)
+            .getSelectedBaselineIndex();
     TextStyle textStyle = Theme.of(context).textTheme.bodyText2;
 
-    if (currentIndex == selectedIndex) {
+    if (currentIndex == selectedBaselineIndex) {
       textStyle =
           kTableTextStyle.copyWith(color: Theme.of(context).selectedRowColor);
     }
