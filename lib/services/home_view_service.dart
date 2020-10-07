@@ -10,11 +10,6 @@ class HomeViewService extends ChangeNotifier {
     initialize();
   }
 
-  // TODO: Add new variable for defaultUnit value
-// TODO: Code Cleanup
-// TODO: Remove dropdown_input.dart
-  // TODO: Improve baseline_value_unit.dart file if required delete it.
-
   List<bool> isSelected = [true, false, false];
 
   List<PlatformModel> _allPlatforms = [

@@ -12,7 +12,7 @@ class PlatformType extends StatefulWidget {
 
 class _PlatformTypeState extends State<PlatformType> {
   List<bool> isSelected;
-  var platformType;
+  HomeViewService platformType;
 
   @override
   void initState() {
