@@ -1,6 +1,3 @@
-// TODO: This class will be responsible to manage common shared variables like:
-// selectedPlatform, selectedBaseline enteredValue and selectedUnit.
-
 import 'package:flutter/material.dart';
 import 'package:scale_factor/enums/platform.dart';
 import 'package:scale_factor/services/platform_model.dart';
@@ -44,6 +41,7 @@ class HomeViewService extends ChangeNotifier {
   PlatformModel selectedPlatform;
   String selectedScale;
   String selectedUnit;
+  double value;
 
   void updateTableType(int index) {
     this.selectedPlatform = _allPlatforms[index];
@@ -78,5 +76,9 @@ class HomeViewService extends ChangeNotifier {
 
   int getSelectedBaselineIndex() {
     return selectedPlatform.scale.indexOf(selectedScale);
+  }
+
+  void setValue(String value) {
+    // TODO: Calculate value and Update table
   }
 }
