@@ -7,37 +7,41 @@ class HomeViewService extends ChangeNotifier {
     initialize();
   }
 
-  List<bool> isSelected = [true, false, false];
-
-  List<PlatformModel> _allPlatforms = [
+  final List<PlatformModel> _allPlatforms = [
     PlatformModel(
-        platform: Platform.Both,
-        scale: [
-          'ldpi',
-          'mdpi - 1x',
-          'hdpi',
-          'xhdpi - 2x',
-          'xxhdpi - 3x',
-          'xxxhdpi'
-        ],
-        units: ['PX', 'DP', 'PT'],
-        defaultBaselineIndex: 1,
-        defaultUnitIndex: 0),
+      platform: Platform.Both,
+      scale: [
+        'ldpi',
+        'mdpi - 1x',
+        'hdpi',
+        'xhdpi - 2x',
+        'xxhdpi - 3x',
+        'xxxhdpi'
+      ],
+      factor: [.75, 1.00, 1.50, 2.00, 3.00, 4.00],
+      units: ['PX', 'DP', 'PT'],
+      defaultBaselineIndex: 1,
+      defaultUnitIndex: 0,
+    ),
     PlatformModel(
       platform: Platform.Android,
       scale: ['ldpi', 'mdpi', 'hdpi', 'xhdpi', 'xxhdpi', 'xxxhdpi'],
+      factor: [.75, 1.00, 1.50, 2.00, 3.00, 4.00],
       units: ['PX', 'DP'],
       defaultBaselineIndex: 1,
       defaultUnitIndex: 0,
     ),
     PlatformModel(
-        platform: Platform.iOS,
-        scale: ['1x', '2x', '3x'],
-        units: ['PX', 'PT'],
-        defaultBaselineIndex: 0,
-        defaultUnitIndex: 0),
+      platform: Platform.iOS,
+      scale: ['1x', '2x', '3x'],
+      factor: [1.00, 2.00, 3.00],
+      units: ['PX', 'PT'],
+      defaultBaselineIndex: 0,
+      defaultUnitIndex: 0,
+    )
   ];
 
+  List<bool> isSelected = [true, false, false];
   PlatformModel selectedPlatform;
   String selectedScale;
   String selectedUnit;
@@ -78,7 +82,9 @@ class HomeViewService extends ChangeNotifier {
     return selectedPlatform.scale.indexOf(selectedScale);
   }
 
-  void setValue(String value) {
+  void setValue(String newValue) {
+    print('TextField: $value');
     // TODO: Calculate value and Update table
+    // TODO: if the new value is not same as old only then update table
   }
 }

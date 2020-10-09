@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'package:scale_factor/constants/platform_constants.dart';
+import 'package:scale_factor/services/home_view_service.dart';
 import 'create_table.dart';
 
 class BothPlatformTable extends StatelessWidget {
@@ -10,23 +13,25 @@ class BothPlatformTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List header = ['Scale', 'DP', 'PT', 'PX'];
-    List<List> rows = [
-      // -- Scale -- DP -- PT ----- PX ----------
-      ['ldpi', '$value', '', convertValue(factor: .75)],
+    HomeViewService platform =
+        Provider.of<HomeViewService>(context, listen: false);
+    // // TODO: Create constants for header list
+    //
+    // List header = ['Scale', 'DP', 'PT', 'PX'];
+    // TODO: if we set column in const in that case if user add's a new column then they have modify
+    //  all tables [both_platform_table.dart, android_platform_table.dart, ios_platform_table.dart]
 
-      ['mdpi - 1x', '$value', '$value', convertValue(factor: 1.00)],
-
-      ['hdpi', '$value', '', convertValue(factor: 1.50)],
-
-      ['xhdpi - 2x', '$value', '$value', convertValue(factor: 2.00)],
-
-      ['xxhdpi - 3x', '$value', '$value', convertValue(factor: 3.00)],
-
-      ['xxxhdpi', '$value', '', convertValue(factor: 4.00)],
-    ];
+    List<List> rows = [];
+    for (int i = 0; i < platform.selectedPlatform.scale.length; i++) {
+      rows.add([
+        platform.selectedPlatform.scale[i],
+        '$value',
+        ignorePTCalculation.contains(i) ? '' : '$value',
+        convertValue(factor: platform.selectedPlatform.factor[i])
+      ]);
+    }
     return CreateTable(
-      headers: header,
+      headers: tableHeaders,
       rows: rows,
     );
   }

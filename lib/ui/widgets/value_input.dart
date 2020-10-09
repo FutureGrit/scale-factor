@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:scale_factor/services/home_view_service.dart';
 
 import 'package:scale_factor/utils/decimal_text_input_formatter.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
@@ -29,11 +31,9 @@ class _ValueInputState extends State<ValueInput> {
                 maxNumberBeforeDecimalRange: 4, decimalRange: 2),
           ],
           onChanged: (value) {
-            // TODO: if the new value is not same as old only then set it in the service
-            print('TextField: $value');
-            //Provider.of<HomeViewService>(context, listen: false).setValue(value)
+            Provider.of<HomeViewService>(context, listen: false)
+                .setValue(value);
           },
-          //TODO: Update table
           style: Theme.of(context).textTheme.headline3,
           maxLines: 1,
           autofocus: false,
