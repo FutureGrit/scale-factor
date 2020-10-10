@@ -25,12 +25,28 @@ class BothPlatformTable extends StatelessWidget {
     for (int i = 0; i < platform.selectedPlatform.scale.length; i++) {
       rows.add([
         platform.selectedPlatform.scale[i],
-        '${platform.value}',
-        ignorePTCalculation.contains(i) ? '' : '${platform.value}',
-        convertValue(
-            value: platform.value, factor: platform.selectedPlatform.factor[i])
+        '${platform.valueInDPI}',
+        ignorePTCalculation.contains(i) ? '__' : '${platform.valueInDPI}',
+        // TODO: Improve implementation for calculating PX
+        // To set entered value, at selected scale PX column from VALUE text
+        // field else we will calculate. This is done to avoid any change in the
+        // input VALUE at selected scale PX column
+        i == platform.getSelectedBaselineIndex()
+            ? platform.value.toStringAsFixed(2)
+            : platform.convertDpiValueToPixel(
+                factor: platform.selectedPlatform.factor[i])
       ]);
     }
+
+    // TODO: if selected unit is not PX then disable [Baseline] dropdown and
+    //  set selectedBaseline to the default value but the functionality will be the same
+
+    // If unit is PX then first calculate DP and PT of selected Baseline.
+    // Then set it in front of scale or in the DP and PT column
+    // Now we need to calculate value converted values for both higher scale and lower scale
+
+    // TODO 0: Calculate set DP and PT as soon as baseline is changed
+
     // TODO 1: Implement value from [Value] text field and update table
     // TODO 2: Implement Unit dropdown functionality.
     // TODO 3: Create Header constants for all type of platform
@@ -43,6 +59,15 @@ class BothPlatformTable extends StatelessWidget {
 
   // TODO: Move below logic to view model
   String convertValue({@required double value, @required double factor}) {
+    // if(selectedUnit == 'PX') {
+    //  // TODO: calculate DP PT value based on selected baseline
+    // valueOfDP = value / selectedBaselineFactor;
+    // // TODO: user value of DP in DP and PT columns
+    // } else {
+    //
+    //
+    // }
+
     return (value * factor).toStringAsFixed(2);
   }
 }

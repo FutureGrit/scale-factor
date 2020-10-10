@@ -46,6 +46,7 @@ class HomeViewService extends ChangeNotifier {
   String selectedScale;
   String selectedUnit;
   double value = 25.00;
+  double valueInDPI;
 
   void updateTableType(int index) {
     this.selectedPlatform = _allPlatforms[index];
@@ -68,25 +69,46 @@ class HomeViewService extends ChangeNotifier {
     updateUnit(selectedPlatform.units[selectedPlatform.defaultUnitIndex]);
   }
 
+  /// To update value of Baseline dropdown
   void updateScale(String newValue) {
     selectedScale = newValue;
+    updateValueInDPI();
     notifyListeners();
   }
 
-  void updateUnit(String newValue) {
-    selectedUnit = newValue;
-    notifyListeners();
-  }
-
-  int getSelectedBaselineIndex() {
-    return selectedPlatform.scale.indexOf(selectedScale);
-  }
-
+  /// To set value when text field [VALUE] will be updated
   void setValue(String newValue) {
     print('TextField: $value');
     value = double.parse(newValue);
+    updateValueInDPI();
     notifyListeners();
     // TODO: Calculate value and Update table
     // TODO: if the new value is not same as old only then update table
+  }
+
+  /// To update value of Unit dropdown
+  void updateUnit(String newValue) {
+    selectedUnit = newValue;
+    updateValueInDPI();
+    notifyListeners();
+  }
+
+  /// To highlight selected Baseline row in the table
+  int getSelectedBaselineIndex() =>
+      selectedPlatform.scale.indexOf(selectedScale);
+
+  void updateValueInDPI() {
+    // TODO: Replace PX with enums
+    //if (selectedUnit == 'PX'){
+    if ('PX' == 'PX') {
+      valueInDPI = double.parse(
+          (value / selectedPlatform.factor[getSelectedBaselineIndex()])
+              .toStringAsFixed(2));
+    }
+  }
+
+  /// To calculate the PX based on the value in DPI which is derived from the text field[VALUE]
+  String convertDpiValueToPixel({@required factor}) {
+    return (valueInDPI * factor).toStringAsFixed(2);
   }
 }
