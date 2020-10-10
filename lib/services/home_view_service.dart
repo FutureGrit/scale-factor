@@ -45,7 +45,7 @@ class HomeViewService extends ChangeNotifier {
   PlatformModel selectedPlatform;
   String selectedScale;
   String selectedUnit;
-  double value;
+  double value = 25.00;
 
   void updateTableType(int index) {
     this.selectedPlatform = _allPlatforms[index];
@@ -84,6 +84,8 @@ class HomeViewService extends ChangeNotifier {
 
   void setValue(String newValue) {
     print('TextField: $value');
+    value = double.parse(newValue);
+    notifyListeners();
     // TODO: Calculate value and Update table
     // TODO: if the new value is not same as old only then update table
   }

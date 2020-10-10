@@ -25,11 +25,16 @@ class BothPlatformTable extends StatelessWidget {
     for (int i = 0; i < platform.selectedPlatform.scale.length; i++) {
       rows.add([
         platform.selectedPlatform.scale[i],
-        '$value',
-        ignorePTCalculation.contains(i) ? '' : '$value',
-        convertValue(factor: platform.selectedPlatform.factor[i])
+        '${platform.value}',
+        ignorePTCalculation.contains(i) ? '' : '${platform.value}',
+        convertValue(
+            value: platform.value, factor: platform.selectedPlatform.factor[i])
       ]);
     }
+    // TODO 1: Implement value from [Value] text field and update table
+    // TODO 2: Implement Unit dropdown functionality.
+    // TODO 3: Create Header constants for all type of platform
+    // TODO 4: Crate single file for all platform table rows and remove ios_platform_table.dart and android_platform_table.dart
     return CreateTable(
       headers: tableHeaders,
       rows: rows,
@@ -37,7 +42,7 @@ class BothPlatformTable extends StatelessWidget {
   }
 
   // TODO: Move below logic to view model
-  String convertValue({@required double factor}) {
+  String convertValue({@required double value, @required double factor}) {
     return (value * factor).toStringAsFixed(2);
   }
 }
