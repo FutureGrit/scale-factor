@@ -109,6 +109,7 @@ class HomeViewService extends ChangeNotifier {
       isDisabled = false;
       //return false;
     } else if (selectedUnit != 'PX' && isDisabled == false) {
+      //TODO: Show a popup with checkbox to inform that why we have disabled Baseline dropdown and checkbox for asking to show it again.
       updateScale(
           selectedPlatform.scale[selectedPlatform.defaultBaselineIndex]);
       isDisabled = true;

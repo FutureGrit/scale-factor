@@ -12,17 +12,25 @@ class BaselineDropdown extends StatelessWidget {
     return IgnorePointer(
       ignoring: platform.isDisabled, //platform.isDisabled,
       child: DropdownButtonWidget(
-        label: ' Baseline',
+        isDisabled: platform.isDisabled,
+        label: ' BASELINE',
         dropdownButton: DropdownButton<String>(
           value: platform.selectedScale,
           dropdownColor: Theme.of(context).cardColor,
           icon: Icon(
             Icons.arrow_drop_down,
-            color: Theme.of(context).focusColor,
+            color: platform.isDisabled
+                ? Theme.of(context).disabledColor
+                : Theme.of(context).focusColor, //TODO: Change color if disabled
           ),
           isExpanded: true,
           isDense: false,
-          style: Theme.of(context).textTheme.headline3,
+          style: platform.isDisabled
+              ? Theme.of(context)
+                  .textTheme
+                  .headline3
+                  .copyWith(color: Theme.of(context).disabledColor)
+              : Theme.of(context).textTheme.headline3,
           items: platform.selectedPlatform.scale
               .map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(

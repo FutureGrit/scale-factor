@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 
 class DropdownButtonWidget extends StatelessWidget {
-  DropdownButtonWidget({@required this.label, @required this.dropdownButton});
+  DropdownButtonWidget(
+      {@required this.label,
+      @required this.dropdownButton,
+      @required this.isDisabled});
 
   final DropdownButton dropdownButton;
   final String label;
+  final bool isDisabled;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,12 @@ class DropdownButtonWidget extends StatelessWidget {
       children: [
         Text(
           label,
-          style: Theme.of(context).textTheme.headline6,
+          style: isDisabled
+              ? Theme.of(context)
+                  .textTheme
+                  .headline6
+                  .copyWith(color: Theme.of(context).disabledColor)
+              : Theme.of(context).textTheme.headline6,
         ),
         kVerticalSpaceSmall,
         Container(
@@ -24,7 +33,9 @@ class DropdownButtonWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(kBorderRadiusSmall),
             color: Theme.of(context).backgroundColor,
             border: Border.all(
-              color: Theme.of(context).focusColor,
+              color: isDisabled
+                  ? Theme.of(context).disabledColor
+                  : Theme.of(context).focusColor,
               width: kBorderWidthNormal,
             ),
           ),
