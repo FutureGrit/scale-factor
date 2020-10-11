@@ -47,6 +47,7 @@ class HomeViewService extends ChangeNotifier {
   String selectedUnit;
   double value = 25.00;
   double valueInDPI;
+  bool isDisabled = false;
 
   void updateTableType(int index) {
     this.selectedPlatform = _allPlatforms[index];
@@ -78,7 +79,7 @@ class HomeViewService extends ChangeNotifier {
 
   /// To set value when text field [VALUE] will be updated
   void setValue(String newValue) {
-    print('TextField: $value');
+    print('VALUE: $value');
     value = double.parse(newValue);
     updateValueInDPI();
     notifyListeners();
@@ -88,9 +89,31 @@ class HomeViewService extends ChangeNotifier {
 
   /// To update value of Unit dropdown
   void updateUnit(String newValue) {
+    // TODO Check: if newValue is not equal to old only then execute below code
     selectedUnit = newValue;
     updateValueInDPI();
+    isBaselineDropdownDisabled();
+    // if (selectedUnit == 'PX') {
+    //   isDisabled = false;
+    // } else if (selectedUnit != 'PX' && isDisabled == false) {
+    //   isDisabled = true;
+    // }
+    print('UNIT: $newValue');
     notifyListeners();
+  }
+
+  void isBaselineDropdownDisabled() {
+    // TODO: update disabled dropdown style
+    // if To make dropdown interactive so user can change baseline
+    if (selectedUnit == 'PX' && isDisabled == true) {
+      isDisabled = false;
+      //return false;
+    } else if (selectedUnit != 'PX' && isDisabled == false) {
+      updateScale(
+          selectedPlatform.scale[selectedPlatform.defaultBaselineIndex]);
+      isDisabled = true;
+    }
+    //TODO: try to remove notify listener and check if still works
   }
 
   /// To highlight selected Baseline row in the table
@@ -99,11 +122,13 @@ class HomeViewService extends ChangeNotifier {
 
   void updateValueInDPI() {
     // TODO: Replace PX with enums
-    //if (selectedUnit == 'PX'){
-    if ('PX' == 'PX') {
+    if (selectedUnit == 'PX') {
+      //if ('PX' == 'PX') {
       valueInDPI = double.parse(
           (value / selectedPlatform.factor[getSelectedBaselineIndex()])
               .toStringAsFixed(2));
+    } else {
+      valueInDPI = value;
     }
   }
 

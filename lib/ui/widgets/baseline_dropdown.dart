@@ -9,32 +9,35 @@ class BaselineDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeViewService platform =
         Provider.of<HomeViewService>(context, listen: false);
-    return DropdownButtonWidget(
-      label: ' Baseline',
-      dropdownButton: DropdownButton<String>(
-        value: platform.selectedScale,
-        dropdownColor: Theme.of(context).cardColor,
-        icon: Icon(
-          Icons.arrow_drop_down,
-          color: Theme.of(context).focusColor,
+    return IgnorePointer(
+      ignoring: platform.isDisabled, //platform.isDisabled,
+      child: DropdownButtonWidget(
+        label: ' Baseline',
+        dropdownButton: DropdownButton<String>(
+          value: platform.selectedScale,
+          dropdownColor: Theme.of(context).cardColor,
+          icon: Icon(
+            Icons.arrow_drop_down,
+            color: Theme.of(context).focusColor,
+          ),
+          isExpanded: true,
+          isDense: false,
+          style: Theme.of(context).textTheme.headline3,
+          items: platform.selectedPlatform.scale
+              .map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(
+                value,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            );
+          }).toList(),
+          onChanged: (String newValue) {
+            platform.updateScale(newValue);
+          },
         ),
-        isExpanded: true,
-        isDense: false,
-        style: Theme.of(context).textTheme.headline3,
-        items: platform.selectedPlatform.scale
-            .map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(
-              value,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          );
-        }).toList(),
-        onChanged: (String newValue) {
-          platform.updateScale(newValue);
-        },
       ),
     );
   }
