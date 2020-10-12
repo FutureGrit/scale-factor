@@ -20,11 +20,11 @@ class ResultTable extends StatelessWidget {
         value: 25.0,
       );
     } else if (selectedPlatform == Platform.Android) {
-      return AndroidPlatformTable(
+      return BothPlatformTable(
         value: 25.0,
       );
     } else {
-      return IosPlatformTable(
+      return BothPlatformTable(
         value: 25,
       );
     }

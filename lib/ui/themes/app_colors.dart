@@ -50,6 +50,10 @@ const kDropdownColorOnDark = Color(0xFF152027);
 // TODO: Set shadow color for dark mode
 const Color kShadowColor = Color(0x40000000); // 40 = 25% Alpha
 
+// --- Disabled color ---
+const kDisabledColorOnLight = Colors.grey;
+const kDisabledColorOnDark = Color(0xFF37474F);
+
 /// Take your opacity as decimal value and multiply it by 255. So, if opacity
 /// is 38% then the decimal value would be .38
 /// and multiplication: .38 * 255 = 96.9

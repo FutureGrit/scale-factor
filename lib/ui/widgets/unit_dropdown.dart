@@ -11,7 +11,7 @@ class UnitDropdown extends StatelessWidget {
         Provider.of<HomeViewService>(context, listen: false);
     return DropdownButtonWidget(
       isDisabled: false,
-      label: ' Unit',
+      label: ' UNIT',
       dropdownButton: DropdownButton<String>(
         value: platform.selectedUnit,
         dropdownColor: Theme.of(context).cardColor,
