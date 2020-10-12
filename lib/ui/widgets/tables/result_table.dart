@@ -1,32 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:scale_factor/constants/platform_constants.dart';
 import 'package:scale_factor/enums/platform.dart';
 import 'package:scale_factor/services/home_view_service.dart';
-import 'package:scale_factor/ui/widgets/tables/android_platform_table.dart';
-import 'package:scale_factor/ui/widgets/tables/both_platform_table.dart';
-import 'package:scale_factor/ui/widgets/tables/ios_platform_table.dart';
+import 'create_table.dart';
 
 class ResultTable extends StatelessWidget {
+  ResultTable({this.defaultValue});
+
+  final double defaultValue;
+
+  // TODO: Set default value for VALUE text field
   @override
   Widget build(BuildContext context) {
-    var selectedPlatform = Provider.of<HomeViewService>(context, listen: false)
-        .selectedPlatform
-        .platform;
+    HomeViewService platform =
+        Provider.of<HomeViewService>(context, listen: false);
+    List<List> rows = [];
 
-    if (selectedPlatform == Platform.Both) {
-      return BothPlatformTable(
-        // TODO: Get value from  TextField
-        value: 25.0,
-      );
-    } else if (selectedPlatform == Platform.Android) {
-      return BothPlatformTable(
-        value: 25.0,
-      );
+    if (platform.selectedPlatform.platform == Platform.Both) {
+      for (int i = 0; i < platform.selectedPlatform.scale.length; i++) {
+        rows.add([
+          platform.selectedPlatform.scale[i], // Scale
+          '${platform.valueInDPI}', // DP
+          //if (platform.selectedPlatform.platform == Platform.Android)
+          ignorePTCalculation.contains(i) ? '' : '${platform.valueInDPI}', // PT
+          // TODO: Improve implementation for calculating PX
+          // To set entered value, at selected scale PX column from VALUE text
+          // field else we will calculate. This is done to avoid any change in the
+          // input VALUE at selected scale PX column
+          i == platform.getSelectedBaselineIndex() // PX
+              ? platform.value.toStringAsFixed(2)
+              : platform.convertDpiValueToPixel(
+                  factor: platform.selectedPlatform.factor[i])
+        ]);
+      }
     } else {
-      return BothPlatformTable(
-        value: 25,
-      );
+      for (int i = 0; i < platform.selectedPlatform.scale.length; i++) {
+        rows.add([
+          platform.selectedPlatform.scale[i], // Scale
+          '${platform.valueInDPI}', // DP or PT
+          // TODO: Improve implementation for calculating PX
+          // To set entered value, at selected scale PX column from VALUE text
+          // field else we will calculate. This is done to avoid any change in the
+          // input VALUE at selected scale PX column
+          i == platform.getSelectedBaselineIndex() // PX
+              ? platform.value.toStringAsFixed(2)
+              : platform.convertDpiValueToPixel(
+                  factor: platform.selectedPlatform.factor[i])
+        ]);
+      }
     }
+
+    return CreateTable(
+      headers: platform.selectedPlatform.tableHeaders,
+      rows: rows,
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:scale_factor/enums/platform.dart';
 import 'package:scale_factor/services/platform_model.dart';
 
@@ -67,6 +68,7 @@ class HomeViewService extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Initializing variable at start
   void initialize() {
     selectedPlatform = _allPlatforms[0];
     updateScale(selectedPlatform.scale[selectedPlatform.defaultBaselineIndex]);
@@ -74,60 +76,52 @@ class HomeViewService extends ChangeNotifier {
   }
 
   /// To update value of Baseline dropdown
-  void updateScale(String newValue) {
-    selectedScale = newValue;
-    updateValueInDPI();
-    notifyListeners();
+  void updateScale(String newScale) {
+    // if newScale is not equal to old selectedScale only then execute below code or update the table values
+    if (newScale != selectedScale) {
+      selectedScale = newScale;
+      updateValueInDPI();
+      notifyListeners();
+    }
   }
 
   /// To set value when text field [VALUE] will be updated
   void setValue(String newValue) {
-    print('VALUE: $value');
     value = double.parse(newValue);
     updateValueInDPI();
     notifyListeners();
-    // TODO: Calculate value and Update table
-    // TODO: if the new value is not same as old only then update table
   }
 
   /// To update value of Unit dropdown
-  void updateUnit(String newValue) {
-    // TODO Check: if newValue is not equal to old only then execute below code
-    selectedUnit = newValue;
-    updateValueInDPI();
-    isBaselineDropdownDisabled();
-    // if (selectedUnit == 'PX') {
-    //   isDisabled = false;
-    // } else if (selectedUnit != 'PX' && isDisabled == false) {
-    //   isDisabled = true;
-    // }
-    print('UNIT: $newValue');
-    notifyListeners();
+  void updateUnit(String newUnit) {
+    // if newUnit is not equal to old selectedUnit only then execute below code or update the table values
+    if (newUnit != selectedUnit) {
+      selectedUnit = newUnit;
+      updateValueInDPI();
+      isBaselineDropdownDisabled();
+      notifyListeners();
+    }
   }
 
+  /// To enable and disable Baseline Dropdown interactivity based on selected unit type
   void isBaselineDropdownDisabled() {
-    // TODO: update disabled dropdown style
-    // if To make dropdown interactive so user can change baseline
     if (selectedUnit == 'PX' && isDisabled == true) {
       isDisabled = false;
-      //return false;
     } else if (selectedUnit != 'PX' && isDisabled == false) {
       //TODO: Show a popup with checkbox to inform that why we have disabled Baseline dropdown and checkbox for asking to show it again.
       updateScale(
           selectedPlatform.scale[selectedPlatform.defaultBaselineIndex]);
       isDisabled = true;
     }
-    //TODO: try to remove notify listener and check if still works
   }
 
   /// To highlight selected Baseline row in the table
   int getSelectedBaselineIndex() =>
       selectedPlatform.scale.indexOf(selectedScale);
 
+  /// To convert input value in density independent pixel or pixel per inch
   void updateValueInDPI() {
-    // TODO: Replace PX with enums
     if (selectedUnit == 'PX') {
-      //if ('PX' == 'PX') {
       valueInDPI = double.parse(
           (value / selectedPlatform.factor[getSelectedBaselineIndex()])
               .toStringAsFixed(2));
