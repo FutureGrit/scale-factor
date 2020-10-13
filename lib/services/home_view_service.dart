@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:scale_factor/enums/platform.dart';
@@ -49,10 +51,11 @@ class HomeViewService extends ChangeNotifier {
   PlatformModel selectedPlatform;
   String selectedScale;
   String selectedUnit;
-  double value = 25.00;
+  double value = 10.00;
   double valueInDPI;
   bool isDisabled = false;
 
+  /// To update the selected platform table type
   void updateTableType(int index) {
     this.selectedPlatform = _allPlatforms[index];
 
@@ -75,10 +78,18 @@ class HomeViewService extends ChangeNotifier {
     updateUnit(selectedPlatform.units[selectedPlatform.defaultUnitIndex]);
   }
 
+  void setDefaultValue(double defaultValue) {
+    print('Setting default value: $defaultValue');
+    value = defaultValue;
+    updateValueInDPI();
+  }
+
   /// To update value of Baseline dropdown
   void updateScale(String newScale) {
     // if newScale is not equal to old selectedScale only then execute below code or update the table values
     if (newScale != selectedScale) {
+      log('Calling Method: updateScale');
+      //print('Setting default value: $defaultValue');
       selectedScale = newScale;
       updateValueInDPI();
       notifyListeners();
@@ -87,6 +98,7 @@ class HomeViewService extends ChangeNotifier {
 
   /// To set value when text field [VALUE] will be updated
   void setValue(String newValue) {
+    log('Calling Method: setValue');
     value = double.parse(newValue);
     updateValueInDPI();
     notifyListeners();
@@ -96,8 +108,8 @@ class HomeViewService extends ChangeNotifier {
   void updateUnit(String newUnit) {
     // if newUnit is not equal to old selectedUnit only then execute below code or update the table values
     if (newUnit != selectedUnit) {
+      log('Calling Method: updateUnit');
       selectedUnit = newUnit;
-      updateValueInDPI();
       isBaselineDropdownDisabled();
       notifyListeners();
     }
@@ -121,17 +133,22 @@ class HomeViewService extends ChangeNotifier {
 
   /// To convert input value in density independent pixel or pixel per inch
   void updateValueInDPI() {
+    print(
+        'Selected: == ${selectedPlatform.factor[getSelectedBaselineIndex()]} and value is: $value');
     if (selectedUnit == 'PX') {
       valueInDPI = double.parse(
           (value / selectedPlatform.factor[getSelectedBaselineIndex()])
               .toStringAsFixed(2));
     } else {
+      /// here we don't need to convert value in DPI because by default
+      /// selected baseline scale will be [mdpi - 1x]
       valueInDPI = value;
     }
   }
 
   /// To calculate the PX based on the value in DPI which is derived from the text field[VALUE]
   String convertDpiValueToPixel({@required factor}) {
+    log('Calling Method: convertDpiValueInPixel : $factor');
     return (valueInDPI * factor).toStringAsFixed(2);
   }
 }
