@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,11 +9,6 @@ import 'package:scale_factor/services/home_view_service.dart';
 import 'create_table.dart';
 
 class ResultTable extends StatelessWidget {
-  ResultTable({this.defaultValue});
-
-  final double defaultValue;
-
-  // TODO: Set default value for VALUE text field
   @override
   Widget build(BuildContext context) {
     HomeViewService platform =
@@ -19,7 +16,9 @@ class ResultTable extends StatelessWidget {
     List<List> rows = [];
 
     if (platform.selectedPlatform.platform == Platform.Both) {
+      log('Inside if Platform BOTH selected');
       for (int i = 0; i < platform.selectedPlatform.scale.length; i++) {
+        log('Value of i = $i');
         rows.add([
           platform.selectedPlatform.scale[i], // Scale
           '${platform.valueInDPI}', // DP

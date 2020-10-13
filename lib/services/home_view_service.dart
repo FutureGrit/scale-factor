@@ -56,20 +56,27 @@ class HomeViewService extends ChangeNotifier {
   bool isDisabled = false;
 
   /// To update the selected platform table type
-  void updateTableType(int index) {
-    this.selectedPlatform = _allPlatforms[index];
+  void updateTableType(int newPlatform) {
+    if (_getSelectedPlatformIndex() != newPlatform) {
+      this.selectedPlatform = _allPlatforms[newPlatform];
 
-    // Set default value for dropdown: Baseline and Unit
-    updateScale(selectedPlatform.scale[selectedPlatform.defaultBaselineIndex]);
-    updateUnit(selectedPlatform.units[selectedPlatform.defaultUnitIndex]);
+      // Set default value for dropdown: Baseline and Unit
+      updateScale(
+          selectedPlatform.scale[selectedPlatform.defaultBaselineIndex]);
+      updateUnit(selectedPlatform.units[selectedPlatform.defaultUnitIndex]);
 
-    // Set the selected platform toggle button
-    for (int buttonIndex = 0; buttonIndex < isSelected.length; buttonIndex++) {
-      isSelected[buttonIndex] = buttonIndex == index;
+      // Set the selected platform toggle button
+      for (int buttonIndex = 0;
+          buttonIndex < isSelected.length;
+          buttonIndex++) {
+        isSelected[buttonIndex] = buttonIndex == newPlatform;
+      }
+      notifyListeners();
     }
-
-    notifyListeners();
   }
+
+  /// To get the index of selected platform index
+  int _getSelectedPlatformIndex() => _allPlatforms.indexOf(selectedPlatform);
 
   /// Initializing variable at start
   void initialize() {
@@ -81,7 +88,7 @@ class HomeViewService extends ChangeNotifier {
   void setDefaultValue(double defaultValue) {
     print('Setting default value: $defaultValue');
     value = defaultValue;
-    updateValueInDPI();
+    convertValueInDPI();
   }
 
   /// To update value of Baseline dropdown
@@ -89,9 +96,8 @@ class HomeViewService extends ChangeNotifier {
     // if newScale is not equal to old selectedScale only then execute below code or update the table values
     if (newScale != selectedScale) {
       log('Calling Method: updateScale');
-      //print('Setting default value: $defaultValue');
       selectedScale = newScale;
-      updateValueInDPI();
+      convertValueInDPI();
       notifyListeners();
     }
   }
@@ -100,7 +106,7 @@ class HomeViewService extends ChangeNotifier {
   void setValue(String newValue) {
     log('Calling Method: setValue');
     value = double.parse(newValue);
-    updateValueInDPI();
+    convertValueInDPI();
     notifyListeners();
   }
 
@@ -132,7 +138,7 @@ class HomeViewService extends ChangeNotifier {
       selectedPlatform.scale.indexOf(selectedScale);
 
   /// To convert input value in density independent pixel or pixel per inch
-  void updateValueInDPI() {
+  void convertValueInDPI() {
     print(
         'Selected: == ${selectedPlatform.factor[getSelectedBaselineIndex()]} and value is: $value');
     if (selectedUnit == 'PX') {
@@ -148,7 +154,7 @@ class HomeViewService extends ChangeNotifier {
 
   /// To calculate the PX based on the value in DPI which is derived from the text field[VALUE]
   String convertDpiValueToPixel({@required factor}) {
-    log('Calling Method: convertDpiValueInPixel : $factor');
+    log('Calling Method: convertDpiValueInPixel : $factor * $valueInDPI || value: $value');
     return (valueInDPI * factor).toStringAsFixed(2);
   }
 }
