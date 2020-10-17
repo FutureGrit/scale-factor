@@ -24,6 +24,3 @@ class TableDataCell extends StatelessWidget {
     );
   }
 }
-// TODO: Text Alignment customization parameter
-// TODO: Padding parameter
-// TODO: background color parameter

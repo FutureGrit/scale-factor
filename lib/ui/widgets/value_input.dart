@@ -38,8 +38,6 @@ class _ValueInputState extends State<ValueInput> {
         ),
         kVerticalSpaceSmall,
         TextField(
-          // TODO: Set default text field value
-          // TODO: Remove . from the entered value if their is no digit after decimal
           inputFormatters: [
             FilteringTextInputFormatter.deny(RegExp(r'[^\d|\.]')),
             DecimalTextInputFormatter(

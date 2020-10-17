@@ -14,7 +14,6 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        //TODO: use media query for preferred size
         preferredSize: Size.fromHeight(106.0),
         child: CustomAppBar(),
       ),

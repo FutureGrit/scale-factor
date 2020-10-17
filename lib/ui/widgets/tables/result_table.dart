@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,15 +14,12 @@ class ResultTable extends StatelessWidget {
     List<List> rows = [];
 
     if (platform.selectedPlatform.platform == Platform.Both) {
-      log('Inside if Platform BOTH selected');
       for (int i = 0; i < platform.selectedPlatform.scale.length; i++) {
-        log('Value of i = $i');
         rows.add([
           platform.selectedPlatform.scale[i], // Scale
           '${platform.valueInDPI}', // DP
-          //if (platform.selectedPlatform.platform == Platform.Android)
           ignorePTCalculation.contains(i) ? '' : '${platform.valueInDPI}', // PT
-          // TODO: Improve implementation for calculating PX
+
           // To set entered value, at selected scale PX column from VALUE text
           // field else we will calculate. This is done to avoid any change in the
           // input VALUE at selected scale PX column
@@ -39,7 +34,7 @@ class ResultTable extends StatelessWidget {
         rows.add([
           platform.selectedPlatform.scale[i], // Scale
           '${platform.valueInDPI}', // DP or PT
-          // TODO: Improve implementation for calculating PX
+
           // To set entered value, at selected scale PX column from VALUE text
           // field else we will calculate. This is done to avoid any change in the
           // input VALUE at selected scale PX column

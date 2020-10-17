@@ -67,8 +67,6 @@ class CreateTable extends StatelessWidget {
 
   TableRow getRow(
       {@required List row, int currentIndex, @required BuildContext context}) {
-    // TODO: Remove context from function
-
     int selectedBaselineIndex =
         Provider.of<HomeViewService>(context, listen: false)
             .getSelectedBaselineIndex();
@@ -84,6 +82,5 @@ class CreateTable extends StatelessWidget {
         TableDataCell(
             value: row[i], textStyle: textStyle, alignment: Alignment.center)
     ]);
-    //TODO - Future Enhancement: customize alignment of first column in the Platform.Both table
   }
 }

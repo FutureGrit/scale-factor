@@ -1,9 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 import 'package:scale_factor/enums/platform.dart';
-import 'package:scale_factor/services/platform_model.dart';
+import 'package:scale_factor/models/platform_model.dart';
 
 class HomeViewService extends ChangeNotifier {
   HomeViewService() {
@@ -86,7 +84,6 @@ class HomeViewService extends ChangeNotifier {
   }
 
   void setDefaultValue(double defaultValue) {
-    print('Setting default value: $defaultValue');
     value = defaultValue;
     convertValueInDPI();
   }
@@ -95,7 +92,6 @@ class HomeViewService extends ChangeNotifier {
   void updateScale(String newScale) {
     // if newScale is not equal to old selectedScale only then execute below code or update the table values
     if (newScale != selectedScale) {
-      log('Calling Method: updateScale');
       selectedScale = newScale;
       convertValueInDPI();
       notifyListeners();
@@ -104,7 +100,7 @@ class HomeViewService extends ChangeNotifier {
 
   /// To set value when text field [VALUE] will be updated
   void setValue(String newValue) {
-    log('Calling Method: setValue');
+    //TODO: BUG if user enters more then 4 digit before adding decimal point
     value = double.parse(newValue);
     convertValueInDPI();
     notifyListeners();
@@ -114,7 +110,6 @@ class HomeViewService extends ChangeNotifier {
   void updateUnit(String newUnit) {
     // if newUnit is not equal to old selectedUnit only then execute below code or update the table values
     if (newUnit != selectedUnit) {
-      log('Calling Method: updateUnit');
       selectedUnit = newUnit;
       isBaselineDropdownDisabled();
       notifyListeners();
@@ -139,8 +134,6 @@ class HomeViewService extends ChangeNotifier {
 
   /// To convert input value in density independent pixel or pixel per inch
   void convertValueInDPI() {
-    print(
-        'Selected: == ${selectedPlatform.factor[getSelectedBaselineIndex()]} and value is: $value');
     if (selectedUnit == 'PX') {
       valueInDPI = double.parse(
           (value / selectedPlatform.factor[getSelectedBaselineIndex()])
@@ -154,7 +147,6 @@ class HomeViewService extends ChangeNotifier {
 
   /// To calculate the PX based on the value in DPI which is derived from the text field[VALUE]
   String convertDpiValueToPixel({@required factor}) {
-    log('Calling Method: convertDpiValueInPixel : $factor * $valueInDPI || value: $value');
     return (valueInDPI * factor).toStringAsFixed(2);
   }
 }

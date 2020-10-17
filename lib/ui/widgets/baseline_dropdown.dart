@@ -21,7 +21,7 @@ class BaselineDropdown extends StatelessWidget {
             Icons.arrow_drop_down,
             color: platform.isDisabled
                 ? Theme.of(context).disabledColor
-                : Theme.of(context).focusColor, //TODO: Change color if disabled
+                : Theme.of(context).focusColor,
           ),
           isExpanded: true,
           isDense: false,

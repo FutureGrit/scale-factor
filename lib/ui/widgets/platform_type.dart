@@ -55,7 +55,6 @@ class _PlatformTypeState extends State<PlatformType> {
           isSelected: isSelected,
           onPressed: (int index) {
             platformType.updateTableType(index);
-            // TODO: Set value of editText and dropdown to default as per selected platform
           },
         ),
       ],
