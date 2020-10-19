@@ -1,4 +1,3 @@
-***NOTE: This application is still under development. Stay Tuned.***
 # Scale Factor <img align="left" src="media/logo.png">
 ***Create perfect design for all.***
 
@@ -9,3 +8,10 @@ Scale Factor is simple tool for converting pixel values between densities suppor
 
 
 ![App Screenshot](media/screenshot.svg)
+
+
+## Roadmap
+* Implementation of "Information" Screen:
+    - iOS Design Guide
+    - Android Design Guide
+* Testing
