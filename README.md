@@ -14,4 +14,5 @@ Scale Factor is simple tool for converting pixel values between densities suppor
 * Implementation of "Information" Screen:
     - iOS Design Guide
     - Android Design Guide
+* Performance Improvement
 * Testing
