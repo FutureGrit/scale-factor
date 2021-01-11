@@ -7,6 +7,7 @@ import 'package:scale_factor/ui/widgets/baseline_value_unit.dart';
 import 'package:scale_factor/ui/widgets/custom_app_bar.dart';
 import 'package:scale_factor/ui/widgets/platform_type.dart';
 import 'package:scale_factor/ui/widgets/tables/result_table.dart';
+import 'package:scale_factor/utils/methods.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 
 class HomeView extends StatelessWidget {
@@ -14,7 +15,8 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(106.0),
+        preferredSize:
+            Size.fromHeight(Methods.getHeight(context, divideBy: 6.2)),
         child: CustomAppBar(),
       ),
       body: Consumer<HomeViewService>(

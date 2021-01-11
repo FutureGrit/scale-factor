@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:scale_factor/ui/themes/app_colors.dart';
+import 'package:scale_factor/utils/methods.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 
 const List<BoxShadow> buttonShadow = [
@@ -35,7 +36,7 @@ class CustomIconButton extends StatelessWidget {
       ),
       child: IconButton(
           padding: EdgeInsets.all(kPaddingNormal),
-          iconSize: kIconSize,
+          iconSize: Methods.getWidth(context, divideBy: 11), //kIconSize,
           icon: Icon(icon),
           color: iconColor,
           onPressed: onPressed),

@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget {
             Expanded(
               // App title text
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
