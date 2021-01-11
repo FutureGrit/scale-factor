@@ -13,10 +13,10 @@ import 'package:scale_factor/utils/ui_utils.dart';
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Methods.context = context;
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize:
-            Size.fromHeight(Methods.getHeight(context, divideBy: 6.2)),
+        preferredSize: Size.fromHeight(Methods.getHeight(divideBy: 6.2)),
         child: CustomAppBar(),
       ),
       body: Consumer<HomeViewService>(

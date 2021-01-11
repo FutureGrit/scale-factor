@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Methods {
-  static double getWidth(BuildContext context, {double divideBy = 1}) =>
+  // Set [context] as soon as first UI builds
+  static BuildContext context;
+
+  static double getWidth({double divideBy = 1}) =>
       MediaQuery.of(context).size.shortestSide / divideBy;
 
-  static double getHeight(BuildContext context, {double divideBy = 1}) =>
+  static double getHeight({double divideBy = 1}) =>
       MediaQuery.of(context).size.longestSide / divideBy;
 }

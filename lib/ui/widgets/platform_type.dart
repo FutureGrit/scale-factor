@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:scale_factor/services/home_view_service.dart';
+import 'package:scale_factor/utils/methods.dart';
 import '../custom_icons.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 
@@ -37,7 +38,7 @@ class _PlatformTypeState extends State<PlatformType> {
                     ((isSelected.length + 1) * kBorderWidthNormal) -
                     (kPaddingLarge * 2)) /
                 isSelected.length,
-            height: kToggleButtonsHeight,
+            height: Methods.getHeight(divideBy: 13.5),
           ),
           children: [
             Text(

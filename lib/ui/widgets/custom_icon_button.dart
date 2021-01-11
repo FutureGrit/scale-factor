@@ -36,7 +36,7 @@ class CustomIconButton extends StatelessWidget {
       ),
       child: IconButton(
           padding: EdgeInsets.all(kPaddingNormal),
-          iconSize: Methods.getWidth(context, divideBy: 11), //kIconSize,
+          iconSize: Methods.getWidth(divideBy: 11), //kIconSize,
           icon: Icon(icon),
           color: iconColor,
           onPressed: onPressed),

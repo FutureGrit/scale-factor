@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:scale_factor/utils/methods.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 
 class DropdownButtonWidget extends StatelessWidget {
@@ -29,6 +30,7 @@ class DropdownButtonWidget extends StatelessWidget {
         kVerticalSpaceSmall,
         Container(
           width: double.infinity,
+          height: Methods.getHeight(divideBy: 13),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(kBorderRadiusSmall),
             color: Theme.of(context).backgroundColor,
