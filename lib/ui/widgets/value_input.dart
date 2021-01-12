@@ -1,9 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'package:scale_factor/services/home_view_service.dart';
+import 'package:scale_factor/ui/themes/shared_styles.dart';
 import 'package:scale_factor/utils/decimal_text_input_formatter.dart';
+import 'package:scale_factor/utils/methods.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
 
 class ValueInput extends StatefulWidget {
@@ -29,6 +32,7 @@ class _ValueInputState extends State<ValueInput> {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle textStyle = kInputFieldTextStyle;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -38,6 +42,14 @@ class _ValueInputState extends State<ValueInput> {
         ),
         kVerticalSpaceSmall,
         TextField(
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(
+                vertical: ((Methods.getHeight(divideBy: 13) -
+                        kInputFieldTextStyle.fontSize) /
+                    2),
+                horizontal: 12),
+            isDense: true,
+          ),
           inputFormatters: [
             FilteringTextInputFormatter.deny(RegExp(r'[^\d|\.]')),
             DecimalTextInputFormatter(

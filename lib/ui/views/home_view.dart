@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
     Methods.context = context;
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(Methods.getHeight(divideBy: 6.2)),
+        preferredSize: Size.fromHeight(Methods.getHeight(divideBy: 6)),
         child: CustomAppBar(),
       ),
       body: Consumer<HomeViewService>(

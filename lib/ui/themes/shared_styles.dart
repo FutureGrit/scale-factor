@@ -39,7 +39,7 @@ final toggleButtonStyle = ToggleButtonsThemeData(
 );
 
 // ---- Input Field Text Style ----
-const kInputFieldTextStyle = TextStyle(
+const TextStyle kInputFieldTextStyle = TextStyle(
   fontSize: 16,
   fontFamily: 'RedHatText',
   fontWeight: FontWeight.w500,
