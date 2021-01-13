@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'package:scale_factor/services/home_view_service.dart';
-import 'package:scale_factor/ui/themes/shared_styles.dart';
 import 'package:scale_factor/utils/decimal_text_input_formatter.dart';
 import 'package:scale_factor/utils/methods.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
@@ -20,19 +19,31 @@ class ValueInput extends StatefulWidget {
 
 class _ValueInputState extends State<ValueInput> {
   TextEditingController controller;
+  GlobalKey _key = GlobalKey();
+  double paddingTopDown = 0.0;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback(_getSize);
+
     // controller for setting default value for TextField
     controller = TextEditingController(text: '${widget.defaultValue}');
     Provider.of<HomeViewService>(context, listen: false)
         .setDefaultValue(widget.defaultValue);
   }
 
+  _getSize(_) {
+    final RenderBox renderBoxRed = _key.currentContext.findRenderObject();
+    final sizeTextField = renderBoxRed.size;
+    setState(() {
+      paddingTopDown =
+          ((Methods.getHeight(divideBy: 13) - sizeTextField.height) / 2);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = kInputFieldTextStyle;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -42,12 +53,10 @@ class _ValueInputState extends State<ValueInput> {
         ),
         kVerticalSpaceSmall,
         TextField(
+          key: _key,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
-                vertical: ((Methods.getHeight(divideBy: 13) -
-                        kInputFieldTextStyle.fontSize) /
-                    2),
-                horizontal: 12),
+                vertical: paddingTopDown, horizontal: kPaddingNormal),
             isDense: true,
           ),
           inputFormatters: [
