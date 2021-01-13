@@ -36,7 +36,7 @@ class _PlatformTypeState extends State<PlatformType> {
           constraints: BoxConstraints.expand(
             width: ((MediaQuery.of(context).size.width) -
                     ((isSelected.length + 1) * kBorderWidthNormal) -
-                    (kPaddingLarge * 2)) /
+                    (kPaddingMedium * 2)) /
                 isSelected.length,
             height: Methods.getHeight(divideBy: 13.5),
           ),

@@ -25,7 +25,7 @@ class HomeView extends StatelessWidget {
             scrollDirection: Axis.vertical,
             child: Container(
               padding: EdgeInsets.symmetric(
-                  horizontal: kPaddingLarge, vertical: kPaddingSmall),
+                  horizontal: kPaddingMedium, vertical: kPaddingSmall),
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +38,7 @@ class HomeView extends StatelessWidget {
                   kVerticalSpaceLarge,
                   Center(
                     child: Text(
-                      '#FutureGrit',
+                      '@FutureGrit',
                       style: kWatermarkTextStyle.copyWith(
                           color: Theme.of(context).dividerColor),
                     ),
