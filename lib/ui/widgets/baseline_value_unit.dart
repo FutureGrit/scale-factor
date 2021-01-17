@@ -19,7 +19,7 @@ class BaselineValueUnit extends StatelessWidget {
         kHorizontalSpaceMedium,
 
         // VALUE label and TextView
-        Expanded(flex: 4, child: ValueInput(defaultValue: 20.00)),
+        Expanded(flex: 4, child: ValueInput(defaultValue: '20.00')),
 
         kHorizontalSpaceMedium,
 

@@ -37,20 +37,21 @@ class CustomAppBar extends StatelessWidget {
                 ],
               ),
             ),
-            CustomIconButton(
-              // This is Information icon
-              icon: CustomIcons.info,
-              iconColor: isDarkModeOn
-                  ? kIconActiveColorOnDark
-                  : kIconActiveColorOnLight,
-              backgroundColor: Theme.of(context).accentColor,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => InformationView()),
-                );
-              },
-            ),
+            //TODO: Uncomment below code and Implement information screen
+            // CustomIconButton(
+            //   // This is Information icon
+            //   icon: CustomIcons.info,
+            //   iconColor: isDarkModeOn
+            //       ? kIconActiveColorOnDark
+            //       : kIconActiveColorOnLight,
+            //   backgroundColor: Theme.of(context).accentColor,
+            //   onPressed: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => InformationView()),
+            //     );
+            //   },
+            // ),
             kHorizontalSpaceMedium,
             CustomIconButton(
               // This is Dark-Mode icon

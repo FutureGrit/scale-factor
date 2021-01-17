@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:scale_factor/services/home_view_service.dart';
 
 import 'package:scale_factor/ui/themes/shared_styles.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
+import 'package:scale_factor/viewmodels/table_view_model.dart';
 import 'table_data_cell.dart';
 
 class CreateTable extends StatelessWidget {
@@ -68,8 +68,8 @@ class CreateTable extends StatelessWidget {
   TableRow getRow(
       {@required List row, int currentIndex, @required BuildContext context}) {
     int selectedBaselineIndex =
-        Provider.of<HomeViewService>(context, listen: false)
-            .getSelectedBaselineIndex();
+        Provider.of<TableViewModel>(context, listen: false)
+            .getSelectedBaselineIndex;
     TextStyle textStyle = Theme.of(context).textTheme.bodyText2;
 
     if (currentIndex == selectedBaselineIndex) {

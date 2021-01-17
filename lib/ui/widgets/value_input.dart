@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import 'package:scale_factor/services/home_view_service.dart';
 import 'package:scale_factor/utils/decimal_text_input_formatter.dart';
 import 'package:scale_factor/utils/methods.dart';
 import 'package:scale_factor/utils/ui_utils.dart';
+import 'package:scale_factor/viewmodels/value_view_model.dart';
 
 class ValueInput extends StatefulWidget {
   ValueInput({@required this.defaultValue});
 
-  final double defaultValue;
+  final String defaultValue;
 
   @override
   _ValueInputState createState() => _ValueInputState();
@@ -29,7 +29,7 @@ class _ValueInputState extends State<ValueInput> {
 
     // controller for setting default value for TextField
     controller = TextEditingController(text: '${widget.defaultValue}');
-    Provider.of<HomeViewService>(context, listen: false)
+    Provider.of<ValueViewModel>(context, listen: false)
         .setDefaultValue(widget.defaultValue);
   }
 
@@ -65,8 +65,7 @@ class _ValueInputState extends State<ValueInput> {
                 maxNumberBeforeDecimalRange: 4, decimalRange: 2),
           ],
           onChanged: (value) {
-            Provider.of<HomeViewService>(context, listen: false)
-                .setValue(value);
+            Provider.of<ValueViewModel>(context, listen: false).setValue(value);
           },
           style: Theme.of(context).textTheme.headline3,
           controller: controller,
