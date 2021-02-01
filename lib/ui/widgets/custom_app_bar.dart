@@ -26,13 +26,14 @@ class CustomAppBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Scale',
-                    style: Theme.of(context).textTheme.headline1,
-                  ),
-                  Text(
-                    'Factor',
-                    style: Theme.of(context).textTheme.headline1,
+                  Expanded(
+                    child: FittedBox(
+                      fit: BoxFit.contain,
+                      child: Text(
+                        'Scale\nFactor',
+                        style: Theme.of(context).textTheme.headline1,
+                      ),
+                    ),
                   ),
                 ],
               ),
