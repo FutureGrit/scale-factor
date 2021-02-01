@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 const kMarginLarge = 24.0;
 
 //  ---- Padding  ----
+const kPaddingTiny = 4.0;
 const kPaddingSmall = 8.0;
 const kPaddingNormal = 12.0;
 const kPaddingMedium = 16.0;

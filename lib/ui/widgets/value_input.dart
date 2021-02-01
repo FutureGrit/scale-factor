@@ -20,12 +20,12 @@ class ValueInput extends StatefulWidget {
 class _ValueInputState extends State<ValueInput> {
   TextEditingController controller;
   GlobalKey _key = GlobalKey();
-  double paddingTopDown = 0.0;
+  double verticalPadding = kPaddingTiny;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback(_getSize);
+    WidgetsBinding.instance.addPostFrameCallback(_updateVerticalPadding);
 
     // controller for setting default value for TextField
     controller = TextEditingController(text: '${widget.defaultValue}');
@@ -33,12 +33,14 @@ class _ValueInputState extends State<ValueInput> {
         .setDefaultValue(widget.defaultValue);
   }
 
-  _getSize(_) {
-    final RenderBox renderBoxRed = _key.currentContext.findRenderObject();
-    final sizeTextField = renderBoxRed.size;
+  /// To update the [verticalPadding] which will be used to manipulate the
+  /// height of value text field.
+  _updateVerticalPadding(_) {
+    final RenderBox renderBox = _key.currentContext.findRenderObject();
+    final valueTextHeight = renderBox.size.height - (verticalPadding * 2);
     setState(() {
-      paddingTopDown =
-          ((Methods.getHeight(divideBy: 13) - sizeTextField.height) / 2);
+      verticalPadding =
+          ((Methods.getHeight(divideBy: 13) - valueTextHeight) / 2);
     });
   }
 
@@ -56,7 +58,7 @@ class _ValueInputState extends State<ValueInput> {
           key: _key,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
-                vertical: paddingTopDown, horizontal: kPaddingNormal),
+                vertical: verticalPadding, horizontal: kPaddingNormal),
             isDense: true,
           ),
           inputFormatters: [
